@@ -116,8 +116,8 @@
                 row = table.insertRow(-1);
 
                 var url = rows[i]['url']
-                row.insertCell(0).innerHTML = buildCell(buildLink(url), 'w5');
-                row.insertCell(1).innerHTML = buildCell(rows[i]['title'], 'w5');
+                row.insertCell(0).innerHTML = buildCell(buildLink(url));
+                row.insertCell(1).innerHTML = buildCell(rows[i]['title']);
                 //row.insertCell(2).innerHTML = buildCell(rows[i]['description']);
                 row.insertCell(2).innerHTML = buildCell(rows[i]['date'], 'nowrap');
                 row.insertCell(3).innerHTML = buildCell(rows[i]['guest'], 'nowrap');
