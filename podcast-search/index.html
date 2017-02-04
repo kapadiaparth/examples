@@ -15,40 +15,50 @@
         box-shadow: inset 9999px 9999px rgba(0,0,0,0.20)
       }
 
-      table, td, th {    
+      table, td, th {
           border: 1px solid #ddd;
           text-align: left;
       }
 
       table {
+          table-layout: auto;
           border-collapse: collapse;
           width: 100%;
       }
 
       th, td {
-          padding: 6px 12px;
-      }    
+          padding: 4px 6px;
+      }
+
+      th {
+        background: rgba(0,0,0,0.05);
+        font-weight: 600;
+        vertical-align: center;
+      }
+
+      td {
+        vertical-align: top;
+        font-size: 14px;
+      }
 
     </style>
   </head>
   <body>
       <div id="top"></div>
-      <div>
-        <div class="flex flex-column pa3 b--black-20">
-          <div class="f3 mh0 mt0 mb3">Podcast Search</div>
-          <form class="flex flex-row items-stretch">
-            <input name="filter" class="mr2">
-
-            <button type="button" class="btn-submit border-box no-select bn ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10">Submit</button>
+      <div class="flex flex-column fixed absolute--fill overflow-hidden">
+        <div class="flex-none flex flex-row items-center pa2">
+          <div class="f4 dib ma0">Podcast Search</div>
+          <form class="dib ml3">
+            <input class="input-reset ba b--black-20 pa2 f6 w5" name="filter" placeholder='"api"'>
+            <button type="button" class="btn-submit border-box no-select ba ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10">Submit</button>
           </form>
         </div>
 
-        <div id="table" class="flex-fill">
+        <div id="table" class="relative flex-auto overflow-y-scroll">
           <table id="myTable">
             <thead>
               <th>Web Address</th>
               <th>Title</th>
-              <th>Description</th>
               <th>Date</th>
               <th>Guest</th>
               <th>Position</th>
@@ -56,7 +66,6 @@
               <th>Category</th>
               <th>Biggest Challenge</th>
               <th>SaaS Resources</th>
-              <th>Notes</th>
             </thead>
             <tbody>
             </tbody>
@@ -70,7 +79,17 @@
     <script>
 
       $(function () {
-	  
+
+        var buildCell = function(str)
+        {
+          return '<div>'+str+'</div>';
+        }
+
+        var buildLink = function(href)
+        {
+          return '<a href="'+href+'" target="_blank">'+href+'</a>';
+        }
+
         var doSubmit = function()
         {
           // disable submit button
@@ -95,17 +114,19 @@
               for (var i = 0; i < rows.length; ++i)
               {
                 row = table.insertRow(-1);
-                row.insertCell(0).innerHTML = rows[i]['url'];
-                row.insertCell(1).innerHTML = rows[i]['title'];
-                row.insertCell(2).innerHTML = rows[i]['description'];
-                row.insertCell(3).innerHTML = rows[i]['date'];
-                row.insertCell(4).innerHTML = rows[i]['guest'];
-                row.insertCell(5).innerHTML = rows[i]['position'];
-                row.insertCell(6).innerHTML = rows[i]['company'];
-                row.insertCell(7).innerHTML = rows[i]['category'];
-                row.insertCell(8).innerHTML = rows[i]['biggest challenge'];
-                row.insertCell(9).innerHTML = rows[i]['saas resources'];
-                row.insertCell(10).innerHTML = rows[i]['notes'];
+
+                var url = rows[i]['url']
+                row.insertCell(0).innerHTML = buildCell(buildLink(url));
+                row.insertCell(1).innerHTML = buildCell(rows[i]['title']);
+                //row.insertCell(2).innerHTML = buildCell(rows[i]['description']);
+                row.insertCell(2).innerHTML = buildCell(rows[i]['date']);
+                row.insertCell(3).innerHTML = buildCell(rows[i]['guest']);
+                row.insertCell(4).innerHTML = buildCell(rows[i]['position']);
+                row.insertCell(5).innerHTML = buildCell(rows[i]['company']);
+                row.insertCell(6).innerHTML = buildCell(rows[i]['category']);
+                row.insertCell(7).innerHTML = buildCell(rows[i]['biggest challenge']);
+                row.insertCell(8).innerHTML = buildCell(rows[i]['saas resources']);
+                //row.insertCell(10).innerHTML = buildCell(rows[i]['notes']);
               }
 
               // enable submit button
