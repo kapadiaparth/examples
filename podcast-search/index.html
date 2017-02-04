@@ -64,7 +64,6 @@
               <th>Position</th>
               <th>Company</th>
               <th>Category</th>
-              <th>Biggest Challenge</th>
               <th>SaaS Resources</th>
             </thead>
             <tbody>
@@ -80,9 +79,10 @@
 
       $(function () {
 
-        var buildCell = function(str)
+        var buildCell = function(str, cls)
         {
-          return '<div>'+str+'</div>';
+          cls = cls || '';
+          return '<div class="'+cls+'">'+str+'</div>';
         }
 
         var buildLink = function(href)
@@ -116,16 +116,16 @@
                 row = table.insertRow(-1);
 
                 var url = rows[i]['url']
-                row.insertCell(0).innerHTML = buildCell(buildLink(url));
-                row.insertCell(1).innerHTML = buildCell(rows[i]['title']);
+                row.insertCell(0).innerHTML = buildCell(buildLink(url), 'w5');
+                row.insertCell(1).innerHTML = buildCell(rows[i]['title'], 'w5');
                 //row.insertCell(2).innerHTML = buildCell(rows[i]['description']);
-                row.insertCell(2).innerHTML = buildCell(rows[i]['date']);
-                row.insertCell(3).innerHTML = buildCell(rows[i]['guest']);
+                row.insertCell(2).innerHTML = buildCell(rows[i]['date'], 'nowrap');
+                row.insertCell(3).innerHTML = buildCell(rows[i]['guest'], 'nowrap');
                 row.insertCell(4).innerHTML = buildCell(rows[i]['position']);
                 row.insertCell(5).innerHTML = buildCell(rows[i]['company']);
                 row.insertCell(6).innerHTML = buildCell(rows[i]['category']);
-                row.insertCell(7).innerHTML = buildCell(rows[i]['biggest challenge']);
-                row.insertCell(8).innerHTML = buildCell(rows[i]['saas resources']);
+                //row.insertCell(7).innerHTML = buildCell(rows[i]['biggest challenge'], 'w5');
+                row.insertCell(7).innerHTML = buildCell(rows[i]['saas resources']);
                 //row.insertCell(10).innerHTML = buildCell(rows[i]['notes']);
               }
 
