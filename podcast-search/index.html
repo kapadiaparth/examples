@@ -58,16 +58,15 @@
           <table id="myTable" style="min-width: 1400px">
             <colgroup>
               <col class="w-20">
+              <col>
+              <col>
+              <col>
+              <col>
+              <col>
               <col class="w-20">
-              <col>
-              <col>
-              <col>
-              <col>
-              <col>
               <col class="w-20">
             </colgroup>
             <thead>
-              <th>Web Address</th>
               <th>Title</th>
               <th>Date</th>
               <th>Guest</th>
@@ -75,6 +74,7 @@
               <th>Company</th>
               <th>Category</th>
               <th>SaaS Resources</th>
+              <th>Web Address</th>
             </thead>
             <tbody>
             </tbody>
@@ -123,20 +123,21 @@
 
               for (var i = 0; i < rows.length; ++i)
               {
+                var cidx = 0;
                 row = table.insertRow(-1);
 
                 var url = rows[i]['url']
-                row.insertCell(0).innerHTML = buildCell(buildLink(url));
-                row.insertCell(1).innerHTML = buildCell(rows[i]['title']);
-                //row.insertCell(2).innerHTML = buildCell(rows[i]['description']);
-                row.insertCell(2).innerHTML = buildCell(rows[i]['date'], 'nowrap');
-                row.insertCell(3).innerHTML = buildCell(rows[i]['guest'], 'nowrap');
-                row.insertCell(4).innerHTML = buildCell(rows[i]['position']);
-                row.insertCell(5).innerHTML = buildCell(rows[i]['company']);
-                row.insertCell(6).innerHTML = buildCell(rows[i]['category']);
-                //row.insertCell(7).innerHTML = buildCell(rows[i]['biggest challenge'], 'w5');
-                row.insertCell(7).innerHTML = buildCell(rows[i]['saas resources']);
-                //row.insertCell(10).innerHTML = buildCell(rows[i]['notes']);
+                row.insertCell(cidx++).innerHTML = buildCell(rows[i]['title']);
+                //row.insertCell(cidx++).innerHTML = buildCell(rows[i]['description']);
+                row.insertCell(cidx++).innerHTML = buildCell(rows[i]['date'], 'nowrap');
+                row.insertCell(cidx++).innerHTML = buildCell(rows[i]['guest'], 'nowrap');
+                row.insertCell(cidx++).innerHTML = buildCell(rows[i]['position']);
+                row.insertCell(cidx++).innerHTML = buildCell(rows[i]['company']);
+                row.insertCell(cidx++).innerHTML = buildCell(rows[i]['category']);
+                //row.insertCell(cidx++).innerHTML = buildCell(rows[i]['biggest challenge'], 'w5');
+                row.insertCell(cidx++).innerHTML = buildCell(rows[i]['saas resources']);
+                //row.insertCell(cidx++).innerHTML = buildCell(rows[i]['notes']);
+                row.insertCell(cidx++).innerHTML = buildCell(buildLink(url));
               }
 
               // enable submit button
