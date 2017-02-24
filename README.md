@@ -4,4 +4,4 @@ We hope you'll use it to check out our work and to create pipes and apps of your
 
 Example | Location | Source
 ---|---------|-------------
-Markdown Editor | [Markdown Editor](https://flexiodata.github.io/examples/markdown-editor/) | [Source](https://www.github.com/flexiodata/examples/markdown-editor)
+Markdown Editor | [Markdown Editor](https://flexiodata.github.io/examples/markdown-editor/) | [Source](https://github.com/flexiodata/examples/tree/master/markdown-editor)
