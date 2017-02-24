@@ -11,7 +11,6 @@
     <!-- Place favicon.ico in the root directory -->
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,700">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" integrity="sha256-t2/7smZfgrST4FS1DT0bs/KotCM74XlcqZN5Vu7xlrw=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.6.2/tachyons.min.css" integrity="sha256-6tdNrosp/sCKfRiUf+62D1D3YQCUtUDV/ysz9T7YQ28=" crossorigin="anonymous" />
     <style>
       html, body {
@@ -19,13 +18,6 @@
         margin: 0;
         height: 100%;
         color: #333;
-      }
-
-      /* same as .flex-auto in Tachyons except without the auto flex-basis */
-      .flex-fill {
-        flex: 1 1;
-        min-width: 0; /* 1 */
-        min-height: 0; /* 1 */
       }
 
       textarea {
@@ -38,6 +30,23 @@
 
       code {
         color: #f66;
+      }
+
+      /* Browser Upgrade Prompt from HTML5 Boilerplate (https://html5boilerplate.com) */
+
+      .browserupgrade {
+          margin: 0.2em 0;
+          background: #ccc;
+          color: #000;
+          padding: 0.2em 0;
+      }
+
+      /* Same as .flex-auto in Tachyons except without the 'auto' flex-basis */
+
+      .flex-fill {
+        flex: 1 1;
+        min-width: 0; /* 1 */
+        min-height: 0; /* 1 */
       }
     </style>
   </head>
