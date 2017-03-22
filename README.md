@@ -6,4 +6,4 @@ Example | Location | Source
 ---|---------|-------------
 Chicago Crime | [Chicago Crime](https://flexiodata.github.io/examples/chicago-crime/) | [Source](https://github.com/flexiodata/examples/tree/master/chicago-crime)
 Contacts | [Contacts](https://flexiodata.github.io/examples/contacts/) | [Source](https://github.com/flexiodata/examples/tree/master/contacts)
-Podcast Search | [Podcast Search](https://flexiodata.github.io/examples/podcast-search/) | [Source](https://github.com/flexiodata/examples/tree/master/podcast-search)
+Saastr Podcast Search | [Saastr Podcast Search](https://flexiodata.github.io/examples/saastr-podcast-search/) | [Source](https://github.com/flexiodata/examples/tree/master/saastr-podcast-search)
