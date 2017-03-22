@@ -118,9 +118,9 @@
 
           $.ajax({
             type: 'POST',
-            url: 'https://www.flex.io/api/v1/pipes/chicago-homicides-v1/run?stream=0',
+            url: 'https://www.flex.io/api/v1/pipes/chicago-crimes-v1/run?stream=0',
             beforeSend: function(xhr) {
-              xhr.setRequestHeader('Authorization', 'Bearer wtxvdvwcwynhyjykvvjv')
+              xhr.setRequestHeader('Authorization', 'Bearer nmgzsqppgwqbvkfhjdjd')
             },
             data: $('form').serialize(),
             dataType: "json",
