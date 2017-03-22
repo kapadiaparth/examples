@@ -103,7 +103,6 @@
               <th>City</th>
               <th>State</th>
               <th>Zip Code</th>
-              <th>Telephone</th>
             </thead>
             <tbody>
             </tbody>
@@ -126,7 +125,7 @@
 
           $.ajax({
             type: 'post',
-            url: 'https://www.flex.io/api/v1/pipes/flexio-podcast-search-v1/run?stream=0',
+            url: 'https://www.flex.io/api/v1/pipes/flexio-contact-refinement-v1/run?stream=0',
             beforeSend: function(xhr) {
               xhr.setRequestHeader('Authorization', 'Bearer nmgzsqppgwqbvkfhjdjd');
             },
@@ -148,7 +147,6 @@
                 row.insertCell(3).innerHTML = rows[i]['city'];
                 row.insertCell(4).innerHTML = rows[i]['state'];
                 row.insertCell(5).innerHTML = rows[i]['zipcode'];
-                row.insertCell(6).innerHTML = rows[i]['telephonenumber'];
               }
 
               // enable submit button
