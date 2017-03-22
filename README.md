@@ -4,4 +4,6 @@ We hope you'll use it to check out our work and to create pipes and apps of your
 
 Example | Location | Source
 ---|---------|-------------
-Markdown Editor | [Markdown Editor](https://flexiodata.github.io/markdown-editor/) | [Source](https://github.com/flexiodata/flexiodata.github.io/tree/master/markdown-editor)
+Chicago Crime | [Chicago Crime](https://flexiodata.github.io/examples/chicago-crime/) | [Source](https://github.com/flexiodata/examples/tree/master/chicago-crime)
+Contacts | [Contacts](https://flexiodata.github.io/examples/contacts/) | [Source](https://github.com/flexiodata/examples/tree/master/contacts)
+Saastr Podcast Search | [Saastr Podcast Search](https://flexiodata.github.io/examples/saastr-podcast-search/) | [Source](https://github.com/flexiodata/examples/tree/master/saastr-podcast-search)

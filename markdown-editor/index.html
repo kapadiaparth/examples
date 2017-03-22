@@ -1,0 +1,173 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Markdown Editor</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.6.2/tachyons.min.css" integrity="sha256-6tdNrosp/sCKfRiUf+62D1D3YQCUtUDV/ysz9T7YQ28=" crossorigin="anonymous" />
+
+    <!-- site css goes here -->
+    <style>
+      html, body {
+        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        margin: 0;
+        height: 100%;
+        color: #333;
+      }
+
+      textarea {
+        border: none;
+        resize: none;
+        outline: none;
+        font-family: Consolas, Menlo, Monaco, "Lucida Console", "Courier New", monospace, serif;
+        font-size: 14px;
+      }
+
+      code {
+        color: #f66;
+      }
+
+      /* Browser Upgrade Prompt from HTML5 Boilerplate (https://html5boilerplate.com) */
+
+      .browserupgrade {
+          margin: 0.2em 0;
+          background: #ccc;
+          color: #000;
+          padding: 0.2em 0;
+      }
+
+      /* Same as .flex-auto in Tachyons except without the 'auto' flex-basis */
+
+      .flex-fill {
+        flex: 1 1;
+        min-width: 0; /* 1 */
+        min-height: 0; /* 1 */
+      }
+
+      /* Button hover */
+
+      .darken-10:hover,
+      .darken-10:focus {
+        box-shadow: inset 9999px 9999px rgba(0,0,0,0.10)
+      }
+
+      .darken-10:active {
+        box-shadow: inset 9999px 9999px rgba(0,0,0,0.20)
+      }
+    </style>
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- site content goes here -->
+    <div id="app" class="flex flex-column fixed absolute--fill overflow-hidden">
+      <div class="flex flex-row items-center pa3 bb b--black-10">
+        <div class="flex-none f4 fw6 ma0">Markdown Editor</div>
+        <button
+          type="button"
+          class="border-box no-select ba ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10 ml3"
+          @click="submit"
+        >Submit</button>
+        <div class="flex-fill"></div>
+        <button
+          type="button"
+          class="border-box no-select ba ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10 ml3"
+          @click="toggleLayout"
+        >Toggle Layout</button>
+      </div>
+      <div
+        class="flex-fill flex"
+        :class="layout=='column'?'flex-column':'flex-row'"
+      >
+        <textarea
+          class="flex-fill pa2 b--black-10 bg-black-05"
+          :class="layout=='column'?'bb':'br'"
+          v-model="markdown"
+        ></textarea>
+        <div
+          class="flex-fill"
+          v-html="compiledMarkdown"
+        ></div>
+      </div>
+    </div>
+
+    <!-- external javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js" integrity="sha256-mJAzKDq6kSoKqZKnA6UNLtPaIj8zT2mFnWu/GSouhgQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js" integrity="sha256-WOtCa7Y+m56k3rvuOvcScNSH45UHE/9femrsdrwnDb4=" crossorigin="anonymous"></script>
+
+    <!-- site javascript goes here -->
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          markdown: '# Overview',
+          layout: 'row'
+        },
+        computed: {
+          compiledMarkdown: function () {
+            return marked(this.markdown, { sanitize: true })
+          }
+        },
+        methods: {
+          update: _.debounce(function(evt) {
+            this.markdown = evt.target.value
+          }, 300),
+          toggleLayout: function() {
+            this.layout = this.layout=='row'?'column':'row'
+          },
+          submit: function() {
+            // ref. http://stackoverflow.com/questions/3012566/how-to-upload-string-as-file-with-jquery-or-other-js-framework
+
+            // Define a boundary, I stole this from IE but you can use any string AFAIK
+            var boundary = '---------------------------7da24f2e50046'
+            var body = '--' + boundary + '\r\n'
+                     // Parameter name is 'file' and local filename is 'temp.txt'
+                     + 'Content-Disposition: form-data; name="html";'
+                     + 'filename="body.html"\r\n'
+                     // Add the file's mime-type
+                     + 'Content-type: text/html\r\n\r\n'
+                     // Add your data
+                     + this.compiledMarkdown + '\r\n'
+                     + '--'+ boundary + '--'
+
+            $.ajax({
+              type: 'POST',
+              url: '',
+              beforeSend: function(xhr) {
+                xhr.setRequestHeader('Authorization', '')
+              },
+              contentType: 'multipart/form-data; boundary='+boundary,
+              data: body,
+              success: function (coords) {
+                alert('Success!')
+              }
+            })
+          }
+        }
+      })
+    </script>
+
+    <!-- Google Analytics -->
+    <script>
+      /*
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+      */
+    </script>
+  </body>
+</html>
