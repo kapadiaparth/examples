@@ -39,13 +39,13 @@
             if (xhr.status === 200) {
               // request returned 200; everything worked
               document.getElementById('results').innerHTML = xhr.responseText;
-
-              // restore the button text
-              document.getElementById('upload-button').innerHTML = 'Upload'
             } else {
               // request returned an error
               alert("An error occurred. Reponse code " + xhr.status)
             }
+
+            // restore the button text
+            document.getElementById('upload-button').innerHTML = 'Upload'
           }
 
           xhr.send(formdata);
