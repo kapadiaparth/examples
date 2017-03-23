@@ -12,8 +12,8 @@
         form.onsubmit = function(event) {
 
           // these variables contain the pipe name to run as well as your api key
-          var pipename = ''
-          var apikey = ''
+          var pipename = 'flexio-minimal'
+          var apikey = 'nmgzsqppgwqbvkfhjdjd'
 
           // prevent default HTML form processing (we'll handle it here)
           event.preventDefault()
@@ -35,18 +35,20 @@
           xhr.open('POST', 'https://www.flex.io/api/v1/pipes/'+pipename+'/run?stream=0', true)
           xhr.setRequestHeader("Authorization", apikey)
           xhr.onload = function() {
+
             if (xhr.status === 200) {
+              // request returned 200; everything worked
               document.getElementById('results').innerHTML = xhr.responseText;
 
               // restore the button text
               document.getElementById('upload-button').innerHTML = 'Upload'
             } else {
-              alert("An error occurred.")
+              // request returned an error
+              alert("An error occurred. Reponse code " + xhr.status)
             }
           }
 
           xhr.send(formdata);
-          
         }
       }
     </script>
@@ -60,4 +62,3 @@
     <pre><div id='results'></div></pre>
   </body>
 </html>
-
