@@ -33,7 +33,7 @@
 
           var xhr = new XMLHttpRequest()
           xhr.open('POST', 'https://www.flex.io/api/v1/pipes/'+pipename+'/run?stream=0', true)
-          xhr.setRequestHeader("Authorization", apikey)
+          xhr.setRequestHeader("Authorization", "Bearer " + apikey)
           xhr.onload = function() {
 
             if (xhr.status === 200) {
