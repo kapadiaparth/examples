@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script>
+      window.onload = function() {
+
+        // get the html form below
+        var form = document.getElementById('file-form')
+
+        // when the form is submitted, process the submission here
+        form.onsubmit = function(event) {
+
+          // these variables contain the pipe name to run as well as your api key
+          var pipename = ''
+          var apikey = ''
+
+          // prevent default HTML form processing (we'll handle it here)
+          event.preventDefault()
+
+          // make a form to upload
+          var formdata = new FormData()
+
+          // get files from HTML form and build HTML form data to send
+          var fileselect = document.getElementById('file-select')
+          var files = fileselect.files
+          for (var i = 0; i < files.length; ++i) {
+            formdata.append('stream_name', files[i], files[i].name)
+          }
+
+          // update button text as feedback that upload is in progress
+          document.getElementById('upload-button').innerHTML = 'Uploading...'
+
+          var xhr = new XMLHttpRequest()
+          xhr.open('POST', 'https://www.flex.io/api/v1/pipes/'+pipename+'/run?stream=0', true)
+          xhr.setRequestHeader("Authorization", apikey)
+          xhr.onload = function() {
+            if (xhr.status === 200) {
+              document.getElementById('results').innerHTML = xhr.responseText;
+
+              // restore the button text
+              document.getElementById('upload-button').innerHTML = 'Upload'
+            } else {
+              alert("An error occurred.")
+            }
+          }
+
+          xhr.send(formdata);
+          
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form id="file-form">
+      <input type="file" name="file" id="file-select">
+      <button type="submit" id="upload-button">Upload</button>
+    </form>
+
+    <pre><div id='results'></div></pre>
+  </body>
+</html>
+
