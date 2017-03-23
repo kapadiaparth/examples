@@ -5,5 +5,5 @@ We hope you'll use it to check out our work and to create pipes and apps of your
 Example | Location | Source
 ---|---------|-------------
 Chicago Crime | [Chicago Crime](https://flexiodata.github.io/examples/chicago-crime/) | [Source](https://github.com/flexiodata/examples/tree/master/chicago-crime)
-Contacts | [Contacts](https://flexiodata.github.io/examples/contacts/) | [Source](https://github.com/flexiodata/examples/tree/master/contacts)
+Contact Refinement | [Contact Refinement](https://flexiodata.github.io/examples/contact-refinement/) | [Source](https://github.com/flexiodata/examples/tree/master/contact-refinement)
 Saastr Podcast Search | [Saastr Podcast Search](https://flexiodata.github.io/examples/saastr-podcast-search/) | [Source](https://github.com/flexiodata/examples/tree/master/saastr-podcast-search)
