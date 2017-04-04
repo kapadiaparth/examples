@@ -10,6 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.6.1/tachyons.min.css" integrity="sha256-eu1dpzpUytdOAUmB67Qi3mBb6HFjruP8BoAzk4lKiSc=" crossorigin="anonymous" />
 
@@ -60,6 +61,16 @@
         border-color: #e5e6e9 #dfe0e4 #d0d1d5;
       }
 
+      /* Success color */
+
+      .bg-dark-green {
+        background-color: #009900;
+      }
+
+      .b--dark-green {
+        border-color: #009900;
+      }
+
       /* Hide default file upload */
 
       /* cheers to https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/ */
@@ -74,7 +85,7 @@
     </style>
   </head>
   <body>
-    <div class="mw5 mw7-ns center pa5 ph5-ns">
+    <div class="mw5 mw7-ns center pa5">
       <div class="pv4 ph5 ba br2 bg-white b--white-box">
         <div class="tc mb4">
           <img alt="Flex.io" src="https://s3.amazonaws.com/flexio-app-assets/logo-flexio-email.png" width="160" height="46">
@@ -100,6 +111,7 @@
             <button
               type="submit"
               class="border-box no-select pointer ba br1 ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10"
+              style="outline: 0 !important"
               id="upload-button"
             >
               Upload
@@ -111,11 +123,14 @@
     </div>
 
     <script>
-      // get the html file input
+      // get the file input
       var file_input = document.getElementById('file-select')
 
-      // get the html file name div
+      // get the file name div
       var file_name = document.getElementById('file-name')
+
+      // get the upload button
+      var upload_button = document.getElementById('upload-button')
 
       // get the html form
       var form = document.getElementById('file-form')
@@ -146,7 +161,7 @@
         }
 
         // update button text as feedback that upload is in progress
-        document.getElementById('upload-button').innerHTML = 'Uploading...'
+        upload_button.innerHTML = 'Uploading...'
 
         var xhr = new XMLHttpRequest()
         xhr.open('POST', 'https://www.flex.io/api/v1/pipes/'+pipename+'/run?stream=0', true)
@@ -155,14 +170,21 @@
 
           if (xhr.status === 200) {
             // request returned 200; everything worked
-            document.getElementById('results').innerHTML = xhr.responseText;
+            //document.getElementById('results').innerHTML = xhr.responseText;
+            upload_button.className = 'border-box no-select pointer ba br1 ttu b f6 ph3 pv2 br1 white bg-dark-green b--dark-green'
+            upload_button.innerHTML = '<i class="material-icons md-18 v-mid" style="font-size: 18px">check_circle</i> <span class="v-mid">Complete</span>'
+
+            setTimeout(function() {
+              upload_button.className = 'border-box no-select pointer ba br1 ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10'
+              upload_button.innerHTML = 'Upload'
+            }, 4000)
           } else {
             // request returned an error
             alert("An error occurred. Reponse code " + xhr.status)
-          }
 
-          // restore the button text
-          document.getElementById('upload-button').innerHTML = 'Upload'
+            // restore the button text
+            upload_button.innerHTML = 'Upload'
+          }
         }
 
         xhr.send(formdata);
