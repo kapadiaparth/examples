@@ -215,7 +215,7 @@
 
         // these variables contain the pipe name to run as well as your api key
         var pipename = 'flexio-upload'
-        var apikey = 'nmgzsqppgwqbvkfhjdjd'
+        var apikey = 'ptjytrpptfcrxsjfpfbb'
 
         // prevent default HTML form processing (we'll handle it here)
         evt.preventDefault()
@@ -238,7 +238,7 @@
 
         // create the XHR to POST to the Flex.io pipe
         var xhr = new XMLHttpRequest()
-        xhr.open('POST', 'https://www.flex.io/api/v1/pipes/'+pipename+'/run?stream=0', true)
+        xhr.open('POST', 'https://test.flex.io/api/v1/pipes/'+pipename+'/run?stream=0', true)
         xhr.setRequestHeader("Authorization", "Bearer " + apikey)
 
         xhr.onload = function() {
