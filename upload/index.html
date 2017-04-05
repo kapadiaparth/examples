@@ -82,6 +82,56 @@
         position: absolute;
         z-index: -1;
       }
+
+      /* Keen UI linear progress bar */
+
+      /* cheers to https://github.com/JosephusPaye/Keen-UI */
+
+      .ui-progress-linear {
+        display: block;
+        height: 0.25rem;
+        overflow: hidden;
+        position: relative;
+        transition-duration: 0.3s;
+        transition-property: height, opacity;
+        transition-timing-function: ease;
+        width: 100%;
+      }
+
+      .ui-progress-linear__progress-bar.is-determinate {
+        height: 0.25rem;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transform-origin: left;
+        transition: transform 0.2s linear;
+        width: 100%;
+      }
+
+      .ui-progress-linear--color-primary {
+        background-color: rgba(33, 150, 243, 0.4);
+      }
+      .ui-progress-linear--color-primary .ui-progress-linear__progress-bar {
+          background-color: #2196f3;
+      }
+      .ui-progress-linear--color-accent {
+        background-color: rgba(213, 0, 249, 0.4);
+      }
+      .ui-progress-linear--color-accent .ui-progress-linear__progress-bar {
+          background-color: #d500f9;
+      }
+      .ui-progress-linear--color-black {
+        background-color: rgba(97, 97, 97, 0.4);
+      }
+      .ui-progress-linear--color-black .ui-progress-linear__progress-bar {
+          background-color: #616161;
+      }
+      .ui-progress-linear--color-white {
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+      .ui-progress-linear--color-white .ui-progress-linear__progress-bar {
+          background-color: white;
+      }
     </style>
   </head>
   <body>
@@ -91,8 +141,8 @@
           <img alt="Flex.io" src="https://s3.amazonaws.com/flexio-app-assets/logo-flexio-email.png" width="160" height="46">
         </div>
         <form id="file-form">
-          <div class="flex flex-row items-stretch mb4">
-            <div class="flex-fill pa2 f6 fw6 bt bb bl b--black-20 br1 br--left" id="file-name"></div>
+          <div class="flex flex-row items-stretch mb3">
+            <div class="flex-fill pa2 f6 fw6 mid-gray bt bb bl b--black-20 br1 br--left" id="file-name"></div>
             <div class="flex flex-row items-center">
               <input
                 type="file"
@@ -107,6 +157,19 @@
               </label>
             </div>
           </div>
+
+          <div class="dn" id="progress-container">
+            <div class="mb4">
+              <div class="f6 fw6 lh-title mb1 mid-gray">
+                Uploading...
+                <span id="progress-loaded">0</span>/<span id="progress-total">0</span>KB
+              </div>
+              <div class="ui-progress-linear ui-progress-linear--color-primary ui-progress-linear--type-determinate">
+                <div role="progressbar" class="ui-progress-linear__progress-bar is-determinate" id="progressbar"></div>
+              </div>
+            </div>
+          </div>
+
           <div class="tc">
             <button
               type="submit"
@@ -132,6 +195,13 @@
       // get the upload button
       var upload_button = document.getElementById('upload-button')
 
+      // progress elements
+      var progress_container = document.getElementById('progress-container')
+      var progress_loaded = document.getElementById('progress-loaded')
+      var progress_total = document.getElementById('progress-total')
+      var progress_bar = document.getElementById('progressbar')
+      var progress_pct = '0%'
+
       // get the html form
       var form = document.getElementById('file-form')
 
@@ -141,14 +211,14 @@
       })
 
       // when the form is submitted, process the submission here
-      form.onsubmit = function(event) {
+      form.onsubmit = function(evt) {
 
         // these variables contain the pipe name to run as well as your api key
         var pipename = 'flexio-upload'
         var apikey = 'nmgzsqppgwqbvkfhjdjd'
 
         // prevent default HTML form processing (we'll handle it here)
-        event.preventDefault()
+        evt.preventDefault()
 
         // make a form to upload
         var formdata = new FormData()
@@ -156,29 +226,37 @@
         // get files from HTML form and build HTML form data to send
         var fileselect = document.getElementById('file-select')
         var files = fileselect.files
+        var filesize_total = 0
         for (var i = 0; i < files.length; ++i) {
           formdata.append('stream_name', files[i], files[i].name)
+          if (typeof files[i].size == 'number')
+            filesize_total += files[i].size
         }
 
         // update button text as feedback that upload is in progress
         upload_button.innerHTML = 'Uploading...'
 
+        // create the XHR to POST to the Flex.io pipe
         var xhr = new XMLHttpRequest()
         xhr.open('POST', 'https://www.flex.io/api/v1/pipes/'+pipename+'/run?stream=0', true)
         xhr.setRequestHeader("Authorization", "Bearer " + apikey)
-        xhr.onload = function() {
 
-          if (xhr.status === 200) {
+        xhr.onload = function() {
+          if (xhr.status === 200)
+          {
             // request returned 200; everything worked
             //document.getElementById('results').innerHTML = xhr.responseText;
             upload_button.className = 'border-box no-select pointer ba br1 ttu b f6 ph3 pv2 br1 white bg-dark-green b--dark-green'
             upload_button.innerHTML = '<i class="material-icons md-18 v-mid" style="font-size: 18px">check_circle</i> <span class="v-mid">Complete</span>'
 
             setTimeout(function() {
+              // restore the button text
               upload_button.className = 'border-box no-select pointer ba br1 ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10'
               upload_button.innerHTML = 'Upload'
             }, 4000)
-          } else {
+          }
+           else
+          {
             // request returned an error
             alert("An error occurred. Reponse code " + xhr.status)
 
@@ -187,7 +265,30 @@
           }
         }
 
-        xhr.send(formdata);
+        xhr.onprogress = function(e) {
+          progress_loaded.innerHTML = ''+(e.loaded/1024).toFixed(1)
+          progress_total.innerHTML = ''+(filesize_total/1024).toFixed(1)
+          progress_pct = ''+(e.loaded/filesize_total).toFixed(2)
+          progress_bar.style = 'transform: scaleX(' + progress_pct + ')'
+        }
+
+        xhr.onloadstart = function(e) {
+          progress_loaded.innerHTML = '0'
+          progress_total.innerHTML = ''+(filesize_total/1024).toFixed(1)
+          progress_pct = '0'
+          progress_bar.style = 'transform: scaleX(' + progress_pct + ')'
+          progress_container.className = ''
+        }
+
+        xhr.onloadend = function(e) {
+          progress_loaded.innerHTML = ''+(filesize_total/1024).toFixed(1)
+          progress_total.innerHTML = ''+(filesize_total/1024).toFixed(1)
+          progress_pct = '100'
+          progress_bar.style = 'transform: scaleX(' + progress_pct + ')'
+          progress_container.className = 'dn'
+        }
+
+        xhr.send(formdata)
       }
     </script>
   </body>
