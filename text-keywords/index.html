@@ -14,6 +14,11 @@
       .darken-10:active {
         box-shadow: inset 9999px 9999px rgba(0,0,0,0.20)
       }
+	  
+	  .results {
+		display: inline-block;
+		width: 600px;
+	  }
     </style>
   </head>
   <body>
@@ -30,7 +35,7 @@
         <div><br></div>
 
         <div id="myText">
-            <span>"Text"</span>
+            <span id="results" class="results"></span>
         </div>
 
       </div>
@@ -54,14 +59,14 @@
               xhr.setRequestHeader('Authorization', 'Bearer nmgzsqppgwqbvkfhjdjd');
             },
             data: $('form').serialize(),
-            dataType: "text",
+            dataType: "json",
             success: function (content) {
 
-              // remove old content
-              $("#myText span").remove();
+			
+              text = content['keywords'].join(', ')
 
               // add new content
-              $('#myText span').text(content);
+              $('#results').text(text);
 
               // enable submit button
               $('.btn-submit').removeClass('o-40').text('Submit').removeAttr('disabled');
