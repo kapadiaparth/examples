@@ -14,35 +14,87 @@
       .darken-10:active {
         box-shadow: inset 9999px 9999px rgba(0,0,0,0.20)
       }
-	  
-	  .results {
-		display: inline-block;
-		width: 600px;
-	  }
     </style>
   </head>
   <body>
-      <div id="top"></div>
-      <div class="flex flex-column fixed absolute--fill overflow-hidden">
-        <div class="flex-none flex flex-row items-center pa2">
-          <div class="f4 dib ma0">Text Keywords</div>
-          <form class="dib ml3">
-            <input class="input-reset ba b--black-20 pa2 f6 w5" name="url" placeholder='"https://www.flex.io", etc'>
-            <button type="button" class="btn-submit border-box no-select ba ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10">Submit</button>
-          </form>
-        </div>
-
-        <div><br></div>
-
-        <div id="myText">
-            <span id="results" class="results"></span>
-        </div>
-
+    <div id="top"></div>
+    <div class="flex flex-column fixed absolute--fill overflow-hidden">
+      <div class="flex-none flex flex-row items-center pa2">
+        <div class="f4 dib ma0">Text Keywords</div>
+        <form class="dib ml3">
+          <input class="input-reset ba b--black-20 pa2 f6 w5" name="url" placeholder='"https://www.flex.io", etc.'>
+          <button type="button" class="btn-submit border-box no-select ba ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10">Submit</button>
+        </form>
+      </div>
+      <div class="flex-fill center">
+        <svg width="900" height="900" font-family="sans-serif" font-size="10" text-anchor="middle" id="svgid"></svg>
       </div>
     </div>
 
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
     <script>
+
+      // classes is a JS object that looks like this:
+      // [{"id":"flare.analytics.cluster.AgglomerativeCluster","value":3938},
+      //  {"id":"flare.analytics.cluster.CommunityStructure","value":3812},
+      //  ...
+      // ]
+
+      function updateSvg(classes)
+      {
+        $("#svgid").empty();
+
+        if (classes.length == 0)
+          return;
+
+        var svg = d3.select("svg"),
+            width = +svg.attr("width"),
+            height = +svg.attr("height");
+
+        var format = d3.format(",d");
+
+        var color = d3.scaleOrdinal(d3.schemeCategory20c);
+
+        var pack = d3.pack()
+            .size([width, height])
+            .padding(1.5);
+
+        var root = d3.hierarchy({children: classes})
+            .sum(function(d) { return d.value; })
+            .each(function(d) {
+              if (id = d.data.id) {
+                var id, i = id.lastIndexOf(".");
+                d.id = id;
+                d.package = id.slice(0, i);
+                d.class = id.slice(i + 1);
+              }
+            });
+        var node = svg.selectAll(".node")
+          .data(pack(root).leaves())
+          .enter().append("g")
+            .attr("class", "node")
+            .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+        node.append("circle")
+            .attr("id", function(d) { return d.id; })
+            .attr("r", function(d) { return d.r; })
+            .style("fill", function(d) { return color(d.package); });
+        node.append("clipPath")
+            .attr("id", function(d) { return "clip-" + d.id; })
+          .append("use")
+            .attr("xlink:href", function(d) { return "#" + d.id; });
+        node.append("text")
+            .attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+          .selectAll("tspan")
+          .data(function(d) { return d.class.split(/(?=[A-Z][^A-Z])/g); })
+          .enter().append("tspan")
+            .attr("x", 0)
+            .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
+            .text(function(d) { return d; });
+        node.append("title")
+            .text(function(d) { return d.id + "\n" + format(d.value); });
+      }
 
       $(function () {
 
@@ -51,6 +103,7 @@
           // disable submit button
           $('.btn-submit').addClass('o-40').text('Loading...').prop('disabled', 'true');
           $('#top').addClass('loading');
+          $("#svgid").empty();
 
           $.ajax({
             type: 'post',
@@ -62,11 +115,7 @@
             dataType: "json",
             success: function (content) {
 
-			
-              text = content['keywords'].join(', ')
-
-              // add new content
-              $('#results').text(text);
+              updateSvg(content);
 
               // enable submit button
               $('.btn-submit').removeClass('o-40').text('Submit').removeAttr('disabled');

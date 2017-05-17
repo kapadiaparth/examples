@@ -14,16 +14,10 @@
       .darken-10:active {
         box-shadow: inset 9999px 9999px rgba(0,0,0,0.20)
       }
-
-      .results {
-        display: inline-block;
-        width: 600px;
-      }
     </style>
   </head>
 
   <body>
-
     <div id="top"></div>
     <div class="flex flex-column fixed absolute--fill overflow-hidden">
       <div class="flex-none flex flex-row items-center pa2">
@@ -42,7 +36,6 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
 
     <script>
-
       // classes is a JS object that looks like this:
       // [{"id":"flare.analytics.cluster.AgglomerativeCluster","value":3938},
       //  {"id":"flare.analytics.cluster.CommunityStructure","value":3812},
@@ -104,12 +97,14 @@
       }
 
       $(function () {
+
         var doSubmit = function()
         {
           // disable submit button
           $('.btn-submit').addClass('o-40').text('Loading...').prop('disabled', 'true');
           $('#top').addClass('loading');
           $("#svgid").empty();
+
           $.ajax({
             type: 'post',
             url: 'https://www.flex.io/api/v1/pipes/flexio-wordcloud-v1/run?stream=0',
