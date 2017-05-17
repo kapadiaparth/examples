@@ -22,7 +22,7 @@
         <div class="flex-none flex flex-row items-center pa2">
           <div class="f4 dib ma0">Text Keywords</div>
           <form class="dib ml3">
-            <input class="input-reset ba b--black-20 pa2 f6 w5" name="filter" placeholder='"https://www.flex.io", etc'>
+            <input class="input-reset ba b--black-20 pa2 f6 w5" name="url" placeholder='"https://www.flex.io", etc'>
             <button type="button" class="btn-submit border-box no-select ba ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10">Submit</button>
           </form>
         </div>
@@ -42,14 +42,14 @@
 
           $.ajax({
             type: 'post',
-            url: '',
+            url: 'https://www.flex.io/api/v1/pipes/flexio-text-keywords-v1/run?stream=0',
             beforeSend: function(xhr) {
               xhr.setRequestHeader('Authorization', 'Bearer ');
             },
             data: $('form').serialize(),
-            dataType: "json",
-            success: function (rows) {
-
+            dataType: "text",
+            success: function (content) {
+                alert(content);
             },
             error: function () {
               alert('post failed');
