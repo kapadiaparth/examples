@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>File Upload</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.6.1/tachyons.min.css" integrity="sha256-eu1dpzpUytdOAUmB67Qi3mBb6HFjruP8BoAzk4lKiSc=" crossorigin="anonymous" />
+
+    <!-- site css goes here -->
+    <style>
+      html, body {
+        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        margin: 0;
+        height: 100%;
+        color: #333;
+      }
+
+      body {
+        background-color: #f5f5f5;
+      }
+
+      /* Browser Upgrade Prompt from HTML5 Boilerplate (https://html5boilerplate.com) */
+
+      .browserupgrade {
+          margin: 0.2em 0;
+          background: #ccc;
+          color: #000;
+          padding: 0.2em 0;
+      }
+
+      /* Same as .flex-auto in Tachyons except without the 'auto' flex-basis */
+
+      .flex-fill {
+        flex: 1 1;
+        min-width: 0; /* 1 */
+        min-height: 0; /* 1 */
+      }
+
+      /* Button hover */
+
+      .darken-10:hover,
+      .darken-10:focus {
+        box-shadow: inset 9999px 9999px rgba(0,0,0,0.10)
+      }
+
+      .darken-10:active {
+        box-shadow: inset 9999px 9999px rgba(0,0,0,0.20)
+      }
+
+      /* White box with border */
+
+      .b--white-box {
+        border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+      }
+
+      /* Success color */
+
+      .bg-dark-green {
+        background-color: #009900;
+      }
+
+      .b--dark-green {
+        border-color: #009900;
+      }
+
+      /* Hide default file upload */
+
+      /* cheers to https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/ */
+      .inputfile  {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+      }
+
+      /* Keen UI linear progress bar */
+
+      /* cheers to https://github.com/JosephusPaye/Keen-UI */
+
+      .ui-progress-linear {
+        display: block;
+        height: 0.25rem;
+        overflow: hidden;
+        position: relative;
+        transition-duration: 0.3s;
+        transition-property: height, opacity;
+        transition-timing-function: ease;
+        width: 100%;
+      }
+
+      .ui-progress-linear__progress-bar.is-determinate {
+        height: 0.25rem;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transform-origin: left;
+        transition: transform 0.2s linear;
+        width: 100%;
+      }
+
+      .ui-progress-linear--color-primary {
+        background-color: rgba(33, 150, 243, 0.4);
+      }
+      .ui-progress-linear--color-primary .ui-progress-linear__progress-bar {
+          background-color: #2196f3;
+      }
+      .ui-progress-linear--color-accent {
+        background-color: rgba(213, 0, 249, 0.4);
+      }
+      .ui-progress-linear--color-accent .ui-progress-linear__progress-bar {
+          background-color: #d500f9;
+      }
+      .ui-progress-linear--color-black {
+        background-color: rgba(97, 97, 97, 0.4);
+      }
+      .ui-progress-linear--color-black .ui-progress-linear__progress-bar {
+          background-color: #616161;
+      }
+      .ui-progress-linear--color-white {
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+      .ui-progress-linear--color-white .ui-progress-linear__progress-bar {
+          background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mw5 mw7-ns center pa5">
+      <div class="pv4 ph5 ba br2 bg-white b--white-box">
+        <div class="tc mb4">
+          <img alt="Flex.io" src="https://s3.amazonaws.com/flexio-app-assets/logo-flexio-email.png" width="160" height="46">
+        </div>
+        <form id="file-form">
+          <div class="flex flex-row items-stretch mb3">
+            <div class="flex-fill pa2 f6 fw6 mid-gray bt bb bl b--black-20 br1 br--left" id="file-name"></div>
+            <div class="flex flex-row items-center">
+              <input
+                type="file"
+                name="file"
+                class="inputfile"
+                id="file-select">
+              <label
+                class="flex-fill pointer ph3 pv2 ba br1 br--right ttu b f6 br1 white bg-blue b--blue darken-10"
+                for="file-select"
+              >
+                Browse
+              </label>
+            </div>
+          </div>
+
+          <div class="dn" id="progress-container">
+            <div class="mb4">
+              <div class="f6 fw6 lh-title mb1 mid-gray">
+                Uploading...
+                <span id="progress-loaded">0</span>/<span id="progress-total">0</span>KB
+              </div>
+              <div class="ui-progress-linear ui-progress-linear--color-primary ui-progress-linear--type-determinate">
+                <div role="progressbar" class="ui-progress-linear__progress-bar is-determinate" id="progressbar"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tc">
+            <button
+              type="submit"
+              class="border-box no-select pointer ba br1 ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10"
+              style="outline: 0 !important"
+              id="upload-button"
+            >
+              Upload
+            </button>
+          </div>
+        </form>
+        <pre><div id='results'></div></pre>
+      </div>
+    </div>
+
+    <script>
+      // get the file input
+      var file_input = document.getElementById('file-select')
+
+      // get the file name div
+      var file_name = document.getElementById('file-name')
+
+      // get the upload button
+      var upload_button = document.getElementById('upload-button')
+
+      // progress elements
+      var progress_container = document.getElementById('progress-container')
+      var progress_loaded = document.getElementById('progress-loaded')
+      var progress_total = document.getElementById('progress-total')
+      var progress_bar = document.getElementById('progressbar')
+      var progress_pct = '0%'
+
+      // get the html form
+      var form = document.getElementById('file-form')
+
+      // show the filename after it has been selected in the native file chooser
+      file_input.addEventListener('change', function(f) {
+        file_name.innerHTML = f.target.value.replace('C:\\fakepath\\', '');
+      })
+
+      // when the form is submitted, process the submission here
+      form.onsubmit = function(evt) {
+
+        // these variables contain the pipe name to run as well as your api key
+        var pipename = 'flexio-upload'
+        var apikey = 'ptjytrpptfcrxsjfpfbb'
+
+        // prevent default HTML form processing (we'll handle it here)
+        evt.preventDefault()
+
+        // make a form to upload
+        var formdata = new FormData()
+
+        // get files from HTML form and build HTML form data to send
+        var fileselect = document.getElementById('file-select')
+        var files = fileselect.files
+        var filesize_total = 0
+        for (var i = 0; i < files.length; ++i) {
+          formdata.append('stream_name', files[i], files[i].name)
+          if (typeof files[i].size == 'number')
+            filesize_total += files[i].size
+        }
+
+        // update button text as feedback that upload is in progress
+        upload_button.innerHTML = 'Uploading...'
+
+        // create the XHR to POST to the Flex.io pipe
+        var xhr = new XMLHttpRequest()
+        xhr.open('POST', 'https://test.flex.io/api/v1/pipes/'+pipename+'/run', true)
+        xhr.setRequestHeader("Authorization", "Bearer " + apikey)
+
+        xhr.onload = function() {
+          if (xhr.status === 200)
+          {
+            // request returned 200; everything worked
+            //document.getElementById('results').innerHTML = xhr.responseText;
+            upload_button.className = 'border-box no-select pointer ba br1 ttu b f6 ph3 pv2 br1 white bg-dark-green b--dark-green'
+            upload_button.innerHTML = '<i class="material-icons md-18 v-mid" style="font-size: 18px">check_circle</i> <span class="v-mid">Complete</span>'
+
+            setTimeout(function() {
+              // restore the button text
+              upload_button.className = 'border-box no-select pointer ba br1 ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10'
+              upload_button.innerHTML = 'Upload'
+            }, 4000)
+          }
+           else
+          {
+            // request returned an error
+            alert("An error occurred. Reponse code " + xhr.status)
+
+            // restore the button text
+            upload_button.innerHTML = 'Upload'
+          }
+        }
+
+        xhr.onprogress = function(e) {
+          progress_loaded.innerHTML = ''+(e.loaded/1024).toFixed(1)
+          progress_total.innerHTML = ''+(filesize_total/1024).toFixed(1)
+          progress_pct = ''+(e.loaded/filesize_total).toFixed(2)
+          progress_bar.style = 'transform: scaleX(' + progress_pct + ')'
+        }
+
+        xhr.onloadstart = function(e) {
+          progress_loaded.innerHTML = '0'
+          progress_total.innerHTML = ''+(filesize_total/1024).toFixed(1)
+          progress_pct = '0'
+          progress_bar.style = 'transform: scaleX(' + progress_pct + ')'
+          progress_container.className = ''
+        }
+
+        xhr.onloadend = function(e) {
+          progress_loaded.innerHTML = ''+(filesize_total/1024).toFixed(1)
+          progress_total.innerHTML = ''+(filesize_total/1024).toFixed(1)
+          progress_pct = '100'
+          progress_bar.style = 'transform: scaleX(' + progress_pct + ')'
+          progress_container.className = 'dn'
+        }
+
+        xhr.send(formdata)
+      }
+    </script>
+  </body>
+</html>
