@@ -15,7 +15,7 @@ var pack = d3.pack()
     .size([width, height])
     .padding(1.5);
 
-d3.csv("file:///c:/src/examples/wordcloud/data.csv", function(d) {
+d3.csv("https://flexiodata.github.io/examples/wordcloud/data.csv", function(d) {
   d.value = +d.value;
   if (d.value) return d;
 }, function(error, classes) {
