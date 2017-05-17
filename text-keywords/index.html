@@ -43,6 +43,9 @@
           $.ajax({
             type: 'post',
             url: 'https://www.flex.io/api/v1/pipes/flexio-text-keywords-v1/run?stream=0',
+            beforeSend: function(xhr) {
+              xhr.setRequestHeader('Authorization', 'Bearer nmgzsqppgwqbvkfhjdjd');
+            },
             data: $('form').serialize(),
             dataType: "text",
             success: function (content) {
