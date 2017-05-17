@@ -26,6 +26,12 @@
             <button type="button" class="btn-submit border-box no-select ba ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10">Submit</button>
           </form>
         </div>
+
+        <div><br></div>
+
+        <div id="myText">
+        </div>
+
       </div>
     </div>
 
@@ -49,7 +55,16 @@
             data: $('form').serialize(),
             dataType: "text",
             success: function (content) {
-              alert(content);
+
+              // remove old content
+              $("#myText").remove();
+
+              // add new content
+              $('#myText').html(data);
+
+              // enable submit button
+              $('.btn-submit').removeClass('o-40').text('Submit').removeAttr('disabled');
+              $('#top').removeClass('loading');
             },
             error: function (xhr, status, error) {
               alert('post failed');
