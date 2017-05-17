@@ -49,10 +49,10 @@
             data: $('form').serialize(),
             dataType: "text",
             success: function (content) {
-                alert(content);
+              alert(content);
             },
-            error: function () {
-              alert('post failed');
+            error: function (xhr, status, error) {
+              alert(xhr.responseText);
             }
           });
         }
