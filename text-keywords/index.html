@@ -54,9 +54,9 @@
     <div class="flex flex-column fixed absolute--fill overflow-hidden tc">
       <div id="header" class="mt3 center tc" style="min-width: 700px">
         <div class="f3 ma0">Webpage Word Cloud</div>
-        <div class="f5 mt2 pa2">Enter URL:</div>
-        <form class="mb2">
-          <input class="input-reset ba b--black-20 pa2 f6 w5" style="width: 400px" name="url" placeholder='"https://www.flex.io", etc.'>
+        <form class="mt3 mb2">
+          <div class="f5 dib pr1">Enter URL:</div>
+          <input id="input_url" class="input-reset ba b--black-20 pa2 f6 w5" style="width: 400px" name="url" placeholder='"https://www.flex.io", etc.'>
           <button type="button" class="btn-submit border-box no-select ba ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10">Submit</button>
           <input id="input_min" type="hidden" name="min_threshold" value="0">
           <input id="input_max" type="hidden" name="max_threshold" value="100000">
@@ -74,6 +74,7 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
 
     <script>
+      var last_url = '';
       var min_max_found = false;
 
       function updateMinMax(arr)
@@ -170,12 +171,41 @@
             onFinish: function (data) {
               $('#input_min').val(data.from);
               $('#input_max').val(data.to);
-              doSubmit();
+
+              if (last_url.length > 0)
+                doSubmit();
             }
         });
 
         var doSubmit = function()
         {
+          var url = $('#input_url').val();
+          if (url.indexOf('http') == -1)
+          {
+            alert('The URL entered is invalid. Enter a valid URL to continue.')
+            return;
+          }
+           else
+          {
+            // if we're searching on a different URL, reset the slider min/max values
+            if (url != last_url)
+            {
+              $('#input_min').val(0);
+              $('#input_max').val(100000);
+
+              var slider = $("#range").data("ionRangeSlider");
+              slider.update({
+                min: 0,
+                max: 100000,
+                from: 0,
+                to: 100000
+              });
+              min_max_found = false;
+            }
+          }
+
+          last_url = url;
+
           // disable submit button
           $('.btn-submit').addClass('o-40').text('Loading...').prop('disabled', 'true');
           $('#top').addClass('loading');
