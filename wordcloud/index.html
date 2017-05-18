@@ -52,7 +52,7 @@
   <body>
     <div id="top"></div>
     <div class="flex flex-column fixed absolute--fill overflow-hidden tc">
-      <div id="header" class="pa2 center tc" style="min-width: 700px">
+      <div id="header" class="mt3 center tc" style="min-width: 700px">
         <div class="f3 ma0">Word Cloud</div>
         <div class="f5 pa2">Specify a minimum and maximum word count:</div>
         <form>
@@ -71,6 +71,22 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
 
     <script>
+      function updateMinMax(arr)
+      {
+        var numbers = arr.map(function(a) {
+          return a.value.length > 0 ? parseFloat(a.value) : null
+        });
+        numbers = numbers.filter(function(n) {
+           return n !== null
+        });
+
+        var slider = $("#range").data("ionRangeSlider");
+        slider.update({
+          min: Math.min.apply(null, numbers),
+          max: Math.max.apply(null, numbers)
+        });
+      }
+
       // classes is a JS object that looks like this:
       // [{"id":"flare.analytics.cluster.AgglomerativeCluster","value":3938},
       //  {"id":"flare.analytics.cluster.CommunityStructure","value":3812},
@@ -164,7 +180,7 @@
             data: $('form').serialize(),
             dataType: "json",
             success: function (content) {
-
+              updateMinMax(content);
               updateSvg(content);
 
               // enable submit button
