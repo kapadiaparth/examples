@@ -57,7 +57,7 @@
         <div class="f5 pa2">Specify a minimum and maximum word count:</div>
         <form>
           <input id="input_min" type="hidden" name="min_threshold" value="0">
-          <input id="input_max" type="hidden" name="threshold" value="50000">
+          <input id="input_max" type="hidden" name="max_threshold" value="50000">
         </form>
         <div id="range" style="width: 100%"></div>
       </div>
@@ -140,7 +140,7 @@
             max: 50000,
             from: 0,
             to: 50000,
-            step: 10,
+            step: 1,
             onFinish: function (data) {
               $('#input_min').val(data.from);
               $('#input_max').val(data.to);
