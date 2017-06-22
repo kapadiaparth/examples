@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.6.1/tachyons.min.css" integrity="sha256-eu1dpzpUytdOAUmB67Qi3mBb6HFjruP8BoAzk4lKiSc=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.1/load5.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.1.7/css/ion.rangeSlider.min.css" integrity="sha256-9sQ/MrLMsJ1scS1YzoW+MWmxQfqZXiEFoiZwaMUaMJc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.1.7/css/ion.rangeSlider.skinHTML5.min.css" integrity="sha256-oM7PRzevaVAykMzbuHA1GfaDUKmnmI2MVKReRf+PCVA=" crossorigin="anonymous">
     <style>
       .darken-10:hover,
       .darken-10:focus {
@@ -14,36 +16,84 @@
       .darken-10:active {
         box-shadow: inset 9999px 9999px rgba(0,0,0,0.20)
       }
-      
-      .results {
-        display: inline-block;
-        width: 600px;
+
+      .irs-line {
+        background: rgba(0,0,0,0.1);
+      }
+
+      .irs-bar,
+      .irs-line {
+        border: none;
+        height: 4px;
+      }
+
+      .irs-slider {
+        border: 2px solid #fff;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        background: #357edd;
+        width: 15px;
+        height: 15px;
+        top: 25px;
+      }
+
+      .irs-bar {
+        border-color: #357edd;
+        background: #357edd;
+      }
+
+      .irs-single,
+      .irs-from,
+      .irs-to {
+        background: #357edd;
       }
     </style>
   </head>
-  
-  <body>
 
+  <body>
     <div id="top"></div>
-    <div class="flex flex-column fixed absolute--fill overflow-hidden">
-      <div class="flex-none flex flex-row items-center pa2">
-        <div class="f4 dib ma0">Enter a maximum threshold:</div>
-          <form class="dib ml3">
-            <input class="input-reset ba b--black-20 pa2 f6 w5" name="threshold" placeholder='"1000", etc' value="1000" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
-            <button type="button" class="btn-submit border-box no-select ba ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10">Submit</button>
-          </form>
+    <div class="flex flex-column fixed absolute--fill overflow-auto tc">
+      <div id="header" class="mt3 center tc" style="min-width: 700px">
+        <div class="f3 ma0">Word Cloud</div>
+        <form>
+          <input id="input_min" type="hidden" name="min_threshold" value="0">
+          <input id="input_max" type="hidden" name="max_threshold" value="100000">
+        </form>
+        <div class="f5 pa2">Specify a minimum and maximum word count:</div>
+        <div id="range" style="width: 100%"></div>
+      </div>
+      <div class="flex-fill center">
+        <svg width="800" height="800" font-family="sans-serif" font-size="10" text-anchor="middle" id="svgid"></svg>
       </div>
     </div>
 
-    <br>
-
-    <svg width="960" height="960" font-family="sans-serif" font-size="10" text-anchor="middle" id="svgid"></svg>
-  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.1.7/js/ion.rangeSlider.min.js" integrity="sha256-ff8CiE/+sJrQzmoyIq+Mllhc6Aw+KkmrQDh7HOWoNMQ=" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    
+
     <script>
-    
+      var min_max_found = false;
+
+      function updateMinMax(arr)
+      {
+        if (min_max_found)
+          return
+
+        var numbers = arr.map(function(a) {
+          return a.value.length > 0 ? parseFloat(a.value) : null
+        });
+        numbers = numbers.filter(function(n) {
+           return n !== null
+        });
+
+        var slider = $("#range").data("ionRangeSlider");
+        slider.update({
+          min: Math.min.apply(null, numbers),
+          max: Math.max.apply(null, numbers)
+        });
+
+        min_max_found = true
+      }
+
       // classes is a JS object that looks like this:
       // [{"id":"flare.analytics.cluster.AgglomerativeCluster","value":3938},
       //  {"id":"flare.analytics.cluster.CommunityStructure","value":3812},
@@ -103,13 +153,31 @@
         node.append("title")
             .text(function(d) { return d.id + "\n" + format(d.value); });
       }
-    
+
       $(function () {
+
+        // initialize range slider
+        $("#range").ionRangeSlider({
+            type: 'double',
+            min: 0,
+            max: 100000,
+            from: 0,
+            to: 100000,
+            step: 1,
+            onFinish: function (data) {
+              $('#input_min').val(data.from);
+              $('#input_max').val(data.to);
+              doSubmit();
+            }
+        });
+
         var doSubmit = function()
         {
           // disable submit button
           $('.btn-submit').addClass('o-40').text('Loading...').prop('disabled', 'true');
           $('#top').addClass('loading');
+          $("#svgid").empty();
+
           $.ajax({
             type: 'post',
             url: 'https://www.flex.io/api/v1/pipes/flexio-wordcloud-v1/run?stream=0',
@@ -119,7 +187,7 @@
             data: $('form').serialize(),
             dataType: "json",
             success: function (content) {
-            
+              updateMinMax(content);
               updateSvg(content);
 
               // enable submit button
@@ -135,12 +203,10 @@
           evt.preventDefault();
           doSubmit();
         })
-        $('.btn-submit').click(function(evt) {
-          doSubmit();
-        });
-      });
 
+        // show the intial results
+        doSubmit();
+      });
     </script>
-  
-</body>
+  </body>
 </html>
