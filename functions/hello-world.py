@@ -1,3 +1,3 @@
-def flexio_handler(input,output):
-    output.content_type = "text/plain"
-    output.write("Hello, World!")
+def flexio_handler(context):
+    context.output.content_type = "text/plain"
+    context.output.write("Hello, World!")
