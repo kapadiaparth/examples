@@ -153,7 +153,7 @@ https://localhost/api/v1/pipes/username-text-keywords-v1/run?flexio_api_key=YOUR
 ```
 
 ```
-curl -X POST 'https://www.flex.io/api/v1/pipes/flexio-text-keywords-v1/run' \
+curl -X POST 'https://www.flex.io/api/v1/pipes/username-text-keywords-v1/run' \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   -d "url=https://www.flex.io" \
   -d "min_threshold=5" \
