@@ -48,6 +48,12 @@ The `request` task allows you to request the contents of a specific URL. Doing t
   .request('https://www.flex.io')
 ```
 
+This isn't necessarily ideal, though, as we will want to run this pipe against and valid webpage URL. To do this, we'll use a POST variable in the `request` task:
+
+```javascript
+  .request('${form.url}')
+```
+
 ### Python
 
 The `python` tasks allows you to run Python code inside of the Flex.io pipe in order to generate new content or to manipulate other content in the pipe. We will use two small Python scripts in this pipe.
