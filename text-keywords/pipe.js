@@ -65,7 +65,7 @@ var pipe = Flexio.pipe()
   .request("${form.url}")
   // use Python to read and parse the content of the HTML from the above website
   .python(py_parse_website_content)
-  // use Python to parse the
+  // use Python to convert the BeautifulSoup output into an array of JSON keypairs
   .python(py_output_json_keypairs)
   // convert the JSON from the previous step into tabular format (which is necessary for filtering)
   .convert("json", "table")
