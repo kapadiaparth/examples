@@ -169,6 +169,12 @@ curl -X POST 'https://www.flex.io/api/v1/pipes/username-text-keywords-v1/run' \
   -d "max_threshold=10000"
 ```
 
+To use the pipe you've saved with this example, edit line 221 of the [index.html](./index.html#L221) file and insert your pipe alias and API key.
+
+```
+  url: 'https://www.flex.io/api/v1/pipes/username-text-keywords-v1/run?flexio_api_key=YOUR_API_KEY',
+```
+
 ## Conclusion
 
 We hope you've enjoyed stepping through this demo and have found it useful. If you have question or would like more information, please feel free to email the [Flex.io developer support team](support@flex.io).
