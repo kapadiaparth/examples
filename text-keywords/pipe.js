@@ -1,4 +1,5 @@
-// uncomment the following line and insert your API key here to use the Flex.io JS SDK
+// uncomment the following line and insert your API key here
+// to use the Flex.io JS SDK with your account
 // Flexio.setup('YOUR_API_KEY')
 
 // This is the Flex.io pipe which encapsulates all of the logic
@@ -63,13 +64,13 @@ def flexio_handler(context):
   // filter the items based on the number of times they exist on the website
   .filter('to_number(value) >= ${form.min_threshold} and to_number(value) <= ${form.max_threshold}')
 
-// You can run the pipe here simply by calling `.run()`
-pipe.run()
+// We can save all of the logic of this pipe to your account in Flex.io. Saving a pipe is very useful
+// as it will allow it to be called via the REST API or a cURL call with the specified pipe alias.
 
-// You can save all of the logic of this pipe to your account in Flex.io. Saving a pipe is very useful
-// as it can now be referenced simply by calling the Flex.io REST API with the specified pipe alias.
-// NOTE: be sure to replace `username` with your username below
+// NOTE: The alias `flexio-text-keywords-v1` below needs to be replaced with your own in order to
+//       save this pipe to your account. Best practices for aliases are to use your username
+//       as a prefix (e.g. `username-text-keywords-v1`)
 pipe.save({
   name: 'Webpage Text Bubble Chart',
-  ename: 'username-my-alias'
+  ename: 'flexio-text-keywords-v1'
 })
