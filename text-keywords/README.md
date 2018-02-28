@@ -8,6 +8,10 @@ TODO: Do we need/want something else here? Common copy we can reuse in all of ou
 
 Flex.io is the API for data feeds. In this demo, we'll take you through the steps necessary to create a serverless data feed which parses a webpage and returns a JSON payload of the most-used words.
 
+## Demo
+
+https://flexiodata.github.io/examples/text-keywords/
+
 ## Installation
 
 ### Node.js
