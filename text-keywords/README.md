@@ -135,12 +135,14 @@ Flex.io pipes can be run in your Javascript code right away without needing to b
 
 ### Saving the pipe for later use
 
-Once your pipe is doing exactly what you'd like, you may save it for later use. Assigning an alias to the pipe allows the pipe to be run simply by issue a REST API call. We recommend adding your Flex.io username as a prefix to all of your aliases.
+Once your pipe is doing exactly what you'd like, you may save it for later use. Saving a pipe is very useful as it will allow it to be called via the REST API or a cURL call with the specified pipe alias. We recommend adding your Flex.io username as a prefix to all of your aliases.
+
+**NOTE: The alias `flexio-text-keywords-v1` below needs to be replaced with your own in order to save this pipe to your account. Best practices for aliases are to use your username as a prefix (e.g. `username-text-keywords-v1`).**
 
 ```javascript
   .save({
     name: 'Webpage Text Bubble Chart',
-    ename: 'username-my-alias'
+    ename: 'flexio-text-keywords-v1'
   })
 ```
 
