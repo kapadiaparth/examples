@@ -26,7 +26,7 @@ npm install flexio-sdk-js
 
 You will need an API key in order to use the Flex.io Javascript SDK. You can generate an API key by logging into your account on Flex.io.
 
-```
+```javascript
 Flexio.setup('YOUR_API_KEY')
 ```
 
@@ -36,7 +36,7 @@ All of the code that we'll build up in this example can be found in the [pipe.js
 
 All Flex.io pipes start with `Flexio.pipe()`. Tasks in a pipe are chained together using periods similar to how jQuery and other APIs chain calls together.
 
-```
+```javascript
 Flexio.pipe()
 ```
 
@@ -44,7 +44,7 @@ Flexio.pipe()
 
 The `request` task allows you to request the contents of a specific URL. Doing the following will issue a web request to get the contents of the Flex.io homepage.
 
-```
+```javascript
   .request('https://www.flex.io')
 ```
 
@@ -54,7 +54,7 @@ The `python` tasks allows you to run Python code inside of the Flex.io pipe in o
 
 The first Python script uses [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/) to parse the HTML of webpage specified in the `request` task above. The Python script interacts with the Flex.io pipe via the `content.input.read()` and `content.output.write()` methods. The Flex.io code handler `def flexio_handler(context):` is required.
 
-```
+```python
   .python(`
 from bs4 import BeautifulSoup
 
@@ -75,7 +75,7 @@ def flexio_handler(context):
 
 The second Python script removes non-ascii characters and returns an array of JSON objects with { id, value } keypairs.
 
-```
+```python
   .python(`
 import json
 from collections import defaultdict
@@ -109,7 +109,7 @@ def flexio_handler(context):
 
 The `convert` task allows you to convert the input from one format to another. In this particular step, we'll convert the out of the Python script above from JSON into a tabular format.
 
-```
+```javascript
   .convert('json', 'table')
 ```
 
@@ -117,7 +117,7 @@ The `convert` task allows you to convert the input from one format to another. I
 
 The `filter` task allows us to output a reduced set of data from the input by apply a `where` condition.
 
-```
+```javascript
   .filter('to_number(value) >= ${form.min_threshold} and to_number(value) <= ${form.max_threshold}')
 ```  
 
@@ -125,7 +125,7 @@ The `filter` task allows us to output a reduced set of data from the input by ap
 
 Flex.io pipes can be run in your Javascript code right away without needing to be saved externally.
 
-```
+```javascript
   .run()
 ```
 
@@ -133,7 +133,7 @@ Flex.io pipes can be run in your Javascript code right away without needing to b
 
 Once your pipe is doing exactly what you'd like, you may save it for later use. Assigning an alias to the pipe allows the pipe to be run simply by issue a REST API call. We recommend adding your Flex.io username as a prefix to all of your aliases.
 
-```
+```javascript
   .save({
     name: 'Webpage Text Bubble Chart',
     ename: 'username-my-alias'
