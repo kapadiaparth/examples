@@ -148,8 +148,17 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
 
 This is how you can run the saved pipe via an HTTP or cURL request:
 
-```
-https://localhost/api/v1/pipes/username-text-keywords-v1/run?flexio_api_key=YOUR_API_KEY
+```javascript
+$.ajax({
+  type: 'POST',
+  url: 'https://www.flex.io/api/v1/pipes/username-text-keywords-v1/run?flexio_api_key=YOUR_API_KEY',
+  data: {
+    url: 'https://www.flex.io',
+    min_threshold: 5,
+    max_threshold: 10000
+  },
+  dataType: 'json'
+})
 ```
 
 ```
