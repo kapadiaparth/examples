@@ -62,8 +62,9 @@ def flexio_handler(context):
   .convert('json', 'table')
   // filter the items based on the number of times they exist on the website
   .filter('to_number(value) >= ${form.min_threshold} and to_number(value) <= ${form.max_threshold}')
-  // run the pipe
-  .run()
+
+// You can run the pipe here simply by calling `.run()`
+pipe.run()
 
 // You can save all of the logic of this pipe to your account in Flex.io. Saving a pipe is very useful
 // as it can now be referenced simply by calling the Flex.io REST API with the specified pipe alias.
