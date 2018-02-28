@@ -218,12 +218,9 @@
 
           $.ajax({
             type: 'post',
-            url: 'https://www.flex.io/api/v1/pipes/flexio-text-keywords-v1/run?stream=0',
-            beforeSend: function(xhr) {
-              xhr.setRequestHeader('Authorization', 'Bearer nmgzsqppgwqbvkfhjdjd');
-            },
+            url: 'https://www.flex.io/api/v1/pipes/flexio-text-keywords-v1/run?flexio_api_key=nmgzsqppgwqbvkfhjdjd',
             data: $('form').serialize(),
-            dataType: "json",
+            dataType: 'json',
             success: function (content) {
               updateMinMax(content);
               updateSvg(content);
