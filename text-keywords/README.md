@@ -149,11 +149,11 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
 This is how you can run the saved pipe via an HTTP or cURL request:
 
 ```
-https://localhost/api/v1/pipes/username-my-alias/run?flexio_api_key=YOUR_API_KEY
+https://localhost/api/v1/pipes/username-text-keywords-v1/run?flexio_api_key=YOUR_API_KEY
 ```
 
 ```
-curl -X POST 'https://localhost/api/v1/pipes/username-my-alias/run' -H 'Authorization: Bearer YOUR_API_KEY'
+curl -X POST 'https://localhost/api/v1/pipes/username-text-keywords-v1/run' -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
 ## Conclusion
