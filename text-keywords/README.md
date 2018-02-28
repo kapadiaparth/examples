@@ -30,8 +30,6 @@ Flexio.setup('YOUR_API_KEY')
 
 All of the code that we'll build up in this example can be found in the [pipe.js](./pipe.js) in this repository.
 
-## Steps
-
 All Flex.io pipes start with `Flexio.pipe()`. Tasks in a pipe are chained together using periods similar to how jQuery and other APIs chain calls together.
 
 ```
