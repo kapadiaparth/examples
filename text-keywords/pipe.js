@@ -1,6 +1,9 @@
-// uncomment the following line and insert your API key here
-// to use the Flex.io JS SDK with your account
-// Flexio.setup('YOUR_API_KEY')
+// if you haven't yet install the Flex.io JS SDK, you'll need to do that
+// before running this script. To do so, run `npm install flexio-sdk-js`.
+var Flexio = require('flexio-sdk-js')
+
+// insert your API key here to use the Flex.io JS SDK with your account
+Flexio.setup('YOUR_API_KEY')
 
 // This is the Flex.io pipe which encapsulates all of the logic
 // required to read the HTML contents of a webpage, process it
