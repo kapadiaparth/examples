@@ -4,8 +4,6 @@ This demo uses the Flex.io Javascript SDK to parse the HTML contents of the webp
 
 ## Overview
 
-**TODO:** We should probably work on putting together some common copy for here that we can reuse in all of our demo apps.
-
 Flex.io is the API for data feeds. In this demo, we'll take you through the steps necessary to create a serverless data feed which parses a webpage and returns a JSON payload of the most-used words.
 
 ## Demo
