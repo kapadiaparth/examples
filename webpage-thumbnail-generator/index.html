@@ -38,6 +38,8 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
     <script>
+      Flexio.setup('nmgzsqppgwqbvkfhjdjd')
+
       var setLoading = function(loading) {
         if (loading === false)
         {
@@ -62,28 +64,51 @@
 
         setLoading(true)
 
-        $.ajax({
-          type: 'post',
-          url: 'https://www.flex.io/api/v1/pipes/flexio-webpage-thumbnail-generator-v1/run?flexio_api_key=nmgzsqppgwqbvkfhjdjd',
-          data: $('form').serialize(),
-          xhrFields: {
-            responseType: 'blob'
-          }
-        })
-        .done(function (data, status, xhr) {
-          setLoading(false)
+        Flexio.pipe()
+          // request the content of the URL that is specified and render it to PNG
+          .render({
+            url: '${form.url}',
+            format: 'png', // 'png' or 'pdf'
+            scrollbars: false
+          })
+          // this Python script resizes the image from the render call above.
+          // The Python script interacts with the Flex.io pipe via the
+          // `content.input.read()` and `content.output.write()` methods.
+          // The Flex.io code handler `def flexio_handler(context):` is required.
+          .python(`
+import PIL
+from PIL import Image
+from io import BytesIO
 
-          if (status == 'success')
-          {
+def flexio_handler(context):
+    context.output.content_type = context.input.content_type
+
+    imagedata = context.input.read()
+    file_imagedata = BytesIO(imagedata)
+    img = Image.open(file_imagedata)
+    imgformat = img.format
+
+    basewidth = 100
+    wpercent = (basewidth / float(img.size[0]))
+    hsize = int((float(img.size[1]) * float(wpercent)))
+    img = img.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
+
+    file_output = BytesIO()
+    img.save(file_output, format = imgformat)
+    file_output.seek(0)
+    contents = file_output.getvalue()
+    file_output.close()
+
+    context.output.write(contents)
+          `)
+          .run()
+          .then(function(response) {
+            setLoading(false)
+
             // response is an image blob
             var url_creator = window.URL || window.webkitURL
             $('#img_result').prop('src', url_creator.createObjectURL(data))
-          }
-           else
-          {
-            alert("An error occurred. Reponse code " + xhr.status)
-          }
-        })
+          })
       }
 
       $('form').on('submit', function (evt) {
