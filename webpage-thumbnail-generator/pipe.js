@@ -32,7 +32,7 @@ def flexio_handler(context):
     img = Image.open(file_imagedata)
     imgformat = img.format
 
-    basewidth = 100
+    basewidth = 160
     wpercent = (basewidth / float(img.size[0]))
     hsize = int((float(img.size[1]) * float(wpercent)))
     img = img.resize((basewidth, hsize), PIL.Image.ANTIALIAS)

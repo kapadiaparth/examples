@@ -39,8 +39,6 @@
     <script src="https://cdn.jsdelivr.net/npm/flexio-sdk-js@1.19.0"></script>
 
     <script>
-      Flexio.setup('nmgzsqppgwqbvkfhjdjd')
-
       var setLoading = function(loading) {
         if (loading === false)
         {
@@ -65,6 +63,7 @@
 
         setLoading(true)
 
+        Flexio.setup('nmgzsqppgwqbvkfhjdjd')
         Flexio.pipe()
           // request the content of the URL that is specified and render it to PNG
           .render({
@@ -89,7 +88,7 @@ def flexio_handler(context):
     img = Image.open(file_imagedata)
     imgformat = img.format
 
-    basewidth = 100
+    basewidth = 160
     wpercent = (basewidth / float(img.size[0]))
     hsize = int((float(img.size[1]) * float(wpercent)))
     img = img.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
@@ -102,13 +101,13 @@ def flexio_handler(context):
 
     context.output.write(contents)
           `)
-          .run()
+          .run({ data: $('form').serialize() })
           .then(function(response) {
-            setLoading(false)
-
             // response is an image blob
             var url_creator = window.URL || window.webkitURL
-            $('#img_result').prop('src', url_creator.createObjectURL(data))
+            $('#img_result').prop('src', url_creator.createObjectURL(response.blob))
+
+            setLoading(false)
           })
       }
 
