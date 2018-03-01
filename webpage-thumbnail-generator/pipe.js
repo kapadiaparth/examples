@@ -13,10 +13,38 @@ var pipe = Flexio.pipe()
   .render({
     url: '${form.url}',
     format: 'png', // 'png' or 'pdf'
-    width: 400,
-    height: 300,
     scrollbars: false
   })
+  // this Python script resizes the image from the render call above.
+  // The Python script interacts with the Flex.io pipe via the
+  // `content.input.read()` and `content.output.write()` methods.
+  // The Flex.io code handler `def flexio_handler(context):` is required.
+  .python(`
+import PIL
+from PIL import Image
+from io import BytesIO
+
+def flexio_handler(context):
+    context.output.content_type = context.input.content_type
+
+    imagedata = context.input.read()
+    file_imagedata = BytesIO(imagedata)
+    img = Image.open(file_imagedata)
+    imgformat = img.format
+
+    basewidth = 100
+    wpercent = (basewidth / float(img.size[0]))
+    hsize = int((float(img.size[1]) * float(wpercent)))
+    img = img.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
+
+    file_output = BytesIO()
+    img.save(file_output, format = imgformat)
+    file_output.seek(0)
+    contents = file_output.getvalue()
+    file_output.close()
+
+    context.output.write(contents)
+`)
 
 // Flex.io pipes can contain quite a bit of logic and code -- this is one thing that differentiates Flex.io from
 // other serverless offerings. We can save all of the logic of this pipe to your account in Flex.io. Saving a pipe

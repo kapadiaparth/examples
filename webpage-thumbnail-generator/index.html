@@ -36,7 +36,6 @@
     </div>
 
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flexio-sdk-js@1.19.0"></script>
 
     <script>
       var setLoading = function(loading) {
@@ -63,23 +62,28 @@
 
         setLoading(true)
 
-        Flexio.setup('nmgzsqppgwqbvkfhjdjd')
-        Flexio.pipe()
-          .render({
-            url: '${form.url}',
-            format: 'png', // 'png' or 'pdf'
-            width: 400,
-            height: 300,
-            scrollbars: false
-          })
-          .run({ data: $('form').serialize() })
-          .then(function(response) {
+        $.ajax({
+          type: 'post',
+          url: 'https://www.flex.io/api/v1/pipes/flexio-webpage-thumbnail-generator-v1/run?flexio_api_key=nmgzsqppgwqbvkfhjdjd',
+          data: $('form').serialize(),
+          xhrFields: {
+            responseType: 'blob'
+          }
+        })
+        .done(function (data, status, xhr) {
+          setLoading(false)
+
+          if (status == 'success')
+          {
             // response is an image blob
             var url_creator = window.URL || window.webkitURL
-            $('#img_result').prop('src', url_creator.createObjectURL(response.blob))
-
-            setLoading(false)
-          })
+            $('#img_result').prop('src', url_creator.createObjectURL(data))
+          }
+           else
+          {
+            alert("An error occurred. Reponse code " + xhr.status)
+          }
+        })
       }
 
       $('form').on('submit', function (evt) {
