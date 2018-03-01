@@ -46,7 +46,7 @@ The `request` task allows you to request the contents of a specific URL. Doing t
   .request('https://www.flex.io')
 ```
 
-This isn't necessarily ideal, though, as we will want to run this pipe against and valid webpage URL. To do this, we'll use a POST variable in the `request` task:
+This isn't necessarily ideal, though, as we will want to run this pipe against any valid webpage URL. To do this, we'll use a POST variable in the `request` task:
 
 ```javascript
   .request('${form.url}')
@@ -123,7 +123,7 @@ The `filter` task allows us to output a reduced set of data from the input by ap
 
 ```javascript
   .filter('to_number(value) >= ${form.min_threshold} and to_number(value) <= ${form.max_threshold}')
-```  
+```
 
 ### Running the pipe in your Javascript code
 
