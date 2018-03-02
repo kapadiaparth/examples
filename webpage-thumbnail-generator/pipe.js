@@ -10,11 +10,7 @@ Flexio.setup('YOUR_API_KEY')
 // and output as a PNG image
 var pipe = Flexio.pipe()
   // request the content of the URL that is specified and render it to PNG
-  .render({
-    url: '${form.url}',
-    format: 'png', // 'png' or 'pdf'
-    scrollbars: false
-  })
+  .render('${form.url}')
   // this Python script resizes the image from the render call above.
   // The Python script interacts with the Flex.io pipe via the
   // `content.input.read()` and `content.output.write()` methods.

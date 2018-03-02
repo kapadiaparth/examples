@@ -52,7 +52,7 @@ This isn't necessarily ideal, though, as we will want to run this pipe against a
   .render('${form.url}')
 ```
 
-We can also include sizing and format options to modify how the webpage is rendered:
+We can optionally also include sizing and format options to modify how the webpage is rendered:
 
 ```javascript
   .render({
