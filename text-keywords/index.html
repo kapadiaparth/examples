@@ -1,12 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <title>Webpage Word Cloud Generator</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Serverless word cloud generator using Flex.io">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="twitter:title" content="Webpage Word Cloud Generator">
+    <meta name="twitter:description" content="Serverless word cloud generator using Flex.io">
+
+    <meta property="og:title" content="Webpage Word Cloud Generator">
+    <meta property="og:url" content="https://github.com/flexiodata/examples/tree/master/webpage-thumbnail-generator">
+    <meta property="og:description" content="Serverless word cloud generator using Flex.io">
+
+    <link rel="apple-touch-icon" href="https://s3.amazonaws.com/flexio-app-assets/apple-touch-icon.png">
+    <link rel="icon" href="https://s3.amazonaws.com/flexio-app-assets/favicon.png">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.6.1/tachyons.min.css" integrity="sha256-eu1dpzpUytdOAUmB67Qi3mBb6HFjruP8BoAzk4lKiSc=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.1/load5.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.1.7/css/ion.rangeSlider.min.css" integrity="sha256-9sQ/MrLMsJ1scS1YzoW+MWmxQfqZXiEFoiZwaMUaMJc=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.1.7/css/ion.rangeSlider.skinHTML5.min.css" integrity="sha256-oM7PRzevaVAykMzbuHA1GfaDUKmnmI2MVKReRf+PCVA=" crossorigin="anonymous">
+
     <style>
       .darken-10:hover,
       .darken-10:focus {
@@ -52,19 +68,19 @@
   <body>
     <a href="https://github.com/flexiodata/examples/tree/master/text-keywords"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
-    <div id="top"></div>
+    <div id="loading"></div>
 
     <div id="app" class="flex flex-column tc">
       <div class="mt5 center tc" style="min-width: 700px">
-        <div class="f3 ma0">Webpage Text Bubble Chart</div>
-        <form class="mt3 mb2">
+        <div class="f3 ma0">Webpage Word Cloud Generator</div>
+        <form class="mv3">
           <div class="f5 dib pr1">Enter URL:</div>
           <input id="input_url" class="input-reset ba b--black-20 pa2 f6 w5" style="width: 400px" name="url" placeholder='"https://www.flex.io", etc.'>
           <button type="button" class="btn-submit border-box no-select ba ttu b f6 ph3 pv2 br1 white bg-blue b--blue darken-10">Submit</button>
           <input id="input_min" type="hidden" name="min_threshold" value="0">
           <input id="input_max" type="hidden" name="max_threshold" value="100000">
         </form>
-        <div id="range" style="width: 100%"></div>
+        <div id="range" class="mv3 w-100"></div>
         <div class="f6 i mid-gray">(Specify a minimum and maximum word count above)</div>
       </div>
       <div class="flex-fill mt3 center">
@@ -222,7 +238,7 @@
 
           // disable submit button
           $('.btn-submit').addClass('o-40').text('Loading...').prop('disabled', 'true');
-          $('#top').addClass('loading');
+          $('#loading').addClass('loading');
           $("#svgid").empty();
 
           $.ajax({
@@ -236,7 +252,7 @@
 
               // enable submit button
               $('.btn-submit').removeClass('o-40').text('Submit').removeAttr('disabled');
-              $('#top').removeClass('loading');
+              $('#loading').removeClass('loading');
             },
             error: function (xhr, status, error) {
               alert('post failed');
