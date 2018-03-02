@@ -7,5 +7,5 @@ Example | Location | Source
 Chicago Crime | [Chicago Crime](https://flexiodata.github.io/examples/chicago-crime/) | [Source](https://github.com/flexiodata/examples/tree/master/chicago-crime)
 Contact Refinement | [Contact Refinement](https://flexiodata.github.io/examples/contact-refinement/) | [Source](https://github.com/flexiodata/examples/tree/master/contact-refinement)
 Saastr Podcast Search | [Saastr Podcast Search](https://flexiodata.github.io/examples/saastr-podcast-search/) | [Source](https://github.com/flexiodata/examples/tree/master/saastr-podcast-search)
-Webpage Wordcloud | [Webpage Wordcloud](https://flexiodata.github.io/examples/text-keywords/) | [Source](https://github.com/flexiodata/examples/tree/master/text-keywords)
+Webpage Word Cloud Generator | [Webpage Word Cloud Generator](https://flexiodata.github.io/examples/webpage-word-cloud-generator/) | [Source](https://github.com/flexiodata/examples/tree/master/webpage-word-cloud-generator)
 Wordcloud | [Wordcloud](https://flexiodata.github.io/examples/wordcloud/) | [Source](https://github.com/flexiodata/examples/tree/master/wordcloud)
