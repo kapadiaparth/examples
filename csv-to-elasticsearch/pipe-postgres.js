@@ -8,8 +8,8 @@ Flexio.setup('YOUR_API_KEY')
 // This is the Flex.io pipe which encapsulates all of the logic
 // required to read the CSV files and output them to Elasticsearch
 var pipe = Flexio.pipe()
-  .read("/tutorial-postgres/contacts")
-  .write("tutorial-elasticsearch/contacts")
+  .read('/tutorial-postgres/contacts')
+  .write('tutorial-elasticsearch/contacts')
 
 // Flex.io pipes can contain quite a bit of logic and code -- this is one thing that differentiates Flex.io from
 // other serverless offerings. We can save all of the logic of this pipe to your account in Flex.io. Saving a pipe
