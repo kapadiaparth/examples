@@ -1,6 +1,6 @@
 # Bulk Load CSV Files into Elasticsearch
 
-This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-sdk/) to copy CSV files cloud storage providers into Elasticsearch. In addition it provides permutations to load from an API, like Twilio or a datbase, like Postgres.  Further, it shows how to add a Python script (using pandas) to perform some preprocessing prior to the Elasticsearch upload.
+This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-sdk/) to copy CSV files cloud storage providers into Elasticsearch. In addition it provides permutations to load from an API, like Twilio or a database, like Postgres.  Further, it shows how to add a Python script (using pandas) to perform some preprocessing prior to the Elasticsearch upload.
 
 ## Overview
 
@@ -97,4 +97,4 @@ To use the pipe you've saved with this example, insert your own pipe alias and A
 
 ## Get Help
 
-If you have question or would like more information, please feel free to email the [Flex.io developer support team](support@flex.io) or th chat button at the bottom of the [Flex.io website](https://www.flex.io).
+If you have question or would like more information, please feel free to email the [Flex.io developer support team](support@flex.io) or the chat button at the bottom of the [Flex.io website](https://www.flex.io).
