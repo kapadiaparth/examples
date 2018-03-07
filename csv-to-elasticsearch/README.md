@@ -1,14 +1,14 @@
-# Webpage Text Bubble Chart
+# Copy CSV Files to Elasticsearch
 
-This demo uses the Flex.io Javascript SDK to load the HTML contents of the webpage and output it as a PNG image.
+This demo uses the Flex.io Javascript SDK to copy CSV files from various services to Elasticsearch.
 
 ## Overview
 
-Flex.io is the API for data feeds. In this demo, we'll take you through the steps necessary to create a serverless data feed which loads a webpage and outputs it as a PNG image.
+Flex.io is the API for data feeds. In this demo, we'll take you through the steps necessary to create a serverless data feed which loads CSV files into Elasticsearch.
 
 ## Demo
 
-https://flexiodata.github.io/examples/webpage-thumbnail-generator/
+https://flexiodata.github.io/examples/csv-to-elasticsearch/
 
 ## Installation
 
@@ -76,12 +76,12 @@ Flex.io pipes can be run in your Javascript code right away without needing to b
 
 Once your pipe is doing exactly what you'd like, you may save it for later use. Saving a pipe is very useful as it will allow it to be called via the REST API or a cURL call with the specified pipe alias. We recommend adding your Flex.io username as a prefix to all of your aliases.
 
-**NOTE: The alias `flexio-webpage-thumbnail-generator-v1` below needs to be replaced with your own in order to save this pipe to your account. Best practices for aliases are to use your username as a prefix (e.g. `YOUR_USERNAME-webpage-thumbnail-generator-v1`).**
+**NOTE: The alias `flexio-csv-to-elasticsearch-v1` below needs to be replaced with your own in order to save this pipe to your account. Best practices for aliases are to use your username as a prefix (e.g. `YOUR_USERNAME-csv-to-elasticsearch-v1`).**
 
 ```javascript
   .save({
     name: 'Webpage Thumbnail Generator',
-    ename: 'flexio-webpage-thumbnail-generator-v1'
+    ename: 'flexio-csv-to-elasticsearch-v1'
   })
 ```
 
@@ -90,7 +90,7 @@ This is how you can run the saved pipe via an HTTP or cURL request:
 ```javascript
 $.ajax({
   type: 'POST',
-  url: 'https://www.flex.io/api/v1/pipes/YOUR_USERNAME-webpage-thumbnail-generator-v1/run?flexio_api_key=YOUR_API_KEY',
+  url: 'https://www.flex.io/api/v1/pipes/YOUR_USERNAME-csv-to-elasticsearch-v1/run?flexio_api_key=YOUR_API_KEY',
   data: {
     url: 'https://www.flex.io'
   },
@@ -99,7 +99,7 @@ $.ajax({
 ```
 
 ```
-curl -X POST 'https://www.flex.io/api/v1/pipes/YOUR_USERNAME-webpage-thumbnail-generator-v1/run' \
+curl -X POST 'https://www.flex.io/api/v1/pipes/YOUR_USERNAME-csv-to-elasticsearch-v1/run' \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   -d "url=https://www.flex.io" \
 ```
@@ -107,7 +107,7 @@ curl -X POST 'https://www.flex.io/api/v1/pipes/YOUR_USERNAME-webpage-thumbnail-g
 To use the pipe you've saved with this example, edit line 67 of the [index.html](./index.html#L67) file and insert your pipe alias and API key.
 
 ```
-  url: 'https://www.flex.io/api/v1/pipes/YOUR_USERNAME-webpage-thumbnail-generator-v1/run?flexio_api_key=YOUR_API_KEY',
+  url: 'https://www.flex.io/api/v1/pipes/YOUR_USERNAME-csv-to-elasticsearch-v1/run?flexio_api_key=YOUR_API_KEY',
 ```
 
 ## Conclusion
