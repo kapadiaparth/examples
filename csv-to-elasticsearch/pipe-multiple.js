@@ -8,9 +8,13 @@ Flexio.setup('YOUR_API_KEY')
 // This is the Flex.io pipe which encapsulates all of the logic
 // required to read the CSV files and output them to Elasticsearch
 var pipe = Flexio.pipe()
-  .read('/tutorial-dropbox/es/contacts.csv')
-  .convert('csv','table')
-  .write('/tutorial-elasticsearch/contacts.csv')
+  .list('/tutorial-dropbox/es/*.csv')
+    .foreach('file : input',
+       Flexio.pipe()
+         .read('${file.path}')
+         .convert('csv','table')
+         .write('/tutorial-elasticsearch/${file.name}')
+    )
 
 // Flex.io pipes can contain quite a bit of logic and code -- this is one thing that differentiates Flex.io from
 // other serverless offerings. We can save all of the logic of this pipe to your account in Flex.io. Saving a pipe
