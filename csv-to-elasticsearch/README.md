@@ -1,14 +1,11 @@
-# Copy CSV Files to Elasticsearch
+# Bulk Load CSV Files into Elasticsearch
 
-This demo uses the Flex.io Javascript SDK to copy CSV files from various services to Elasticsearch.
+This demo uses the Flex.io Javascript SDK to copy CSV files cloud storage providers into Elasticsearch. In addition it provides permutations to load from an API, like Twilio or a datbase, like Postgres.  Further, it shows how to add a Python script (using pandas) to perform some preprocessing prior to the Elasticsearch upload.
 
 ## Overview
 
-Flex.io is the API for data feeds. In this demo, we'll take you through the steps necessary to create a serverless data feed which loads CSV files into Elasticsearch.
+[Flex.io](http://Flex.io)  is an API for moving, processing and integrating data in the cloud that helps developers build and deploy scalable data feeds with just a few lines of code. This repo provides the source data and pipes used in the [Bulk Load CSV Files into Elasticsearch Indices](https://www.flex.io/docs/tutorials/bulk-load-csv-files-elasticsearch-indices) tutorial.
 
-## Demo
-
-https://flexiodata.github.io/examples/csv-to-elasticsearch/
 
 ## Installation
 
@@ -22,7 +19,7 @@ npm install flexio-sdk-js
 
 ## Setup
 
-You will need an API key in order to use the Flex.io Javascript SDK. You can generate an API key by logging into your account on Flex.io.
+You will need an API key in order to use the Flex.io Javascript SDK. You can sign up for a [Free Flex.io API Key here](https://www.flex.io/app/signup).
 
 ```javascript
 Flexio.setup('YOUR_API_KEY')
@@ -30,43 +27,29 @@ Flexio.setup('YOUR_API_KEY')
 
 ## Code
 
-All of the code that we'll build up in this example can be found in the [pipe.js](./pipe.js) file in this repository.
+The pipes code used in the tutorials can be found in this repo as follows:
 
-All Flex.io pipes start with `Flexio.pipe()`. Tasks in a pipe are chained together using periods similar to how jQuery and other APIs chain calls together.
+* [pipe.js](./pipe.js)
+* [pipe-multiple.js](./pipe-multiple.js))
+* [pipe-postgres.js](./pipe-postgres.js)
+* [pipe-python.js](./pipe-python.js)
+* [pipe-twilio.js](./pipe-twilio.js)
+
+For example, here are the core tasks from the [pipe.js](./pipe.js) snippet:
 
 ```javascript
 Flexio.pipe()
+  .read('/tutorial-dropbox/es/contacts.csv')
+  .convert('csv','table')
+  .write('/tutorial-elasticsearch/contacts.csv')
 ```
 
-### Render
+All Flex.io pipes start with `Flexio.pipe()`. Tasks in a pipe are chained together using periods similar to how jQuery and other APIs chain calls together.  The `read` and `write` tasks use an alias of your connection.  [Here is a guide on setting up a connection in Flex.io.](https://www.flex.io/docs).
 
-The `render` task allows you to request the contents of a specific URL and render that URL as an image or a PDF. Doing the following will issue a web request to get the contents of the Flex.io homepage.
-
-```javascript
-  .render('https://www.flex.io')
-```
-
-This isn't necessarily ideal, though, as we will want to run this pipe against any valid webpage URL. To do this, we'll use a POST variable in the `render` task:
-
-```javascript
-  .render('${form.url}')
-```
-
-We can optionally also include sizing and format options to modify how the webpage is rendered:
-
-```javascript
-  .render({
-    url: '${form.url}',
-    format: 'png', // 'png' or 'pdf'
-    width: 400,
-    height: 300,
-    scrollbars: false
-  })
-```
 
 ### Running the pipe in your Javascript code
 
-Flex.io pipes can be run in your Javascript code right away without needing to be saved externally.
+Flex.io pipes can be run in your Javascript code inline without needing to be saved externally.
 
 ```javascript
   .run()
@@ -74,7 +57,7 @@ Flex.io pipes can be run in your Javascript code right away without needing to b
 
 ### Saving the pipe for later use
 
-Once your pipe is doing exactly what you'd like, you may save it for later use. Saving a pipe is very useful as it will allow it to be called via the REST API or a cURL call with the specified pipe alias. We recommend adding your Flex.io username as a prefix to all of your aliases.
+Once you have prototyped your pipe, you may save it for later use. Saving a pipe is very useful as it will allow it to be called via the REST API or a cURL call with the specified pipe alias.
 
 **NOTE: The alias `flexio-csv-to-elasticsearch-v1` below needs to be replaced with your own in order to save this pipe to your account. Best practices for aliases are to use your username as a prefix (e.g. `YOUR_USERNAME-csv-to-elasticsearch-v1`).**
 
@@ -84,6 +67,8 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
     ename: 'flexio-csv-to-elasticsearch-v1'
   })
 ```
+
+### Running a saved pipe
 
 This is how you can run the saved pipe via an HTTP or cURL request:
 
@@ -104,12 +89,12 @@ curl -X POST 'https://www.flex.io/api/v1/pipes/YOUR_USERNAME-csv-to-elasticsearc
   -d "url=https://www.flex.io" \
 ```
 
-To use the pipe you've saved with this example, edit line 67 of the [index.html](./index.html#L67) file and insert your pipe alias and API key.
+To use the pipe you've saved with this example, insert your own pipe alias and API key.
 
 ```
   url: 'https://www.flex.io/api/v1/pipes/YOUR_USERNAME-csv-to-elasticsearch-v1/run?flexio_api_key=YOUR_API_KEY',
 ```
 
-## Conclusion
+## Get Help
 
-We hope you've enjoyed stepping through this demo and have found it useful. If you have question or would like more information, please feel free to email the [Flex.io developer support team](support@flex.io).
+If you have question or would like more information, please feel free to email the [Flex.io developer support team](support@flex.io) or th chat button at the bottom of the [Flex.io website](https://www.flex.io).
