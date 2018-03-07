@@ -29,11 +29,11 @@ Flexio.setup('YOUR_API_KEY')
 
 The pipes code used in the tutorials can be found in this repo as follows:
 
-* [pipe.js](./pipe.js)
-* [pipe-multiple.js](./pipe-multiple.js))
-* [pipe-postgres.js](./pipe-postgres.js)
-* [pipe-python.js](./pipe-python.js)
-* [pipe-twilio.js](./pipe-twilio.js)
+* [pipe.js](./pipe.js) - Read single CSV file from cloud storage, convert, write to Elasticsearch
+* [pipe-multiple.js](./pipe-multiple.js)) - Read multiple CSV files from cloud storage, convert, write to Elasticsearch
+* [pipe-postgres.js](./pipe-postgres.js) - Read from a database table, like Postgres, write to Elasticsearch
+* [pipe-twilio.js](./pipe-twilio.js) - Read from Twilio (call logs), convert, write to Elasticsearch
+* [pipe-python.js](./pipe-python.js) - Read from Twilio (call logs), convert, Python (pandas) process to lowercase, write to Elasticsearch
 
 For example, here are the core tasks from the [pipe.js](./pipe.js) snippet:
 
