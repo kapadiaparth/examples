@@ -59,12 +59,12 @@ Flex.io pipes can be run in your Javascript code inline without needing to be sa
 
 Once you have prototyped your pipe, you may save it for later use. Saving a pipe is very useful as it will allow it to be called via the REST API or a cURL call with the specified pipe alias.
 
-**NOTE: The alias `flexio-csv-to-elasticsearch-v1` below needs to be replaced with your own in order to save this pipe to your account. Best practices for aliases are to use your username as a prefix (e.g. `YOUR_USERNAME-csv-to-elasticsearch-v1`).**
+**NOTE: The alias `examples-batch-csv-to-elasticsearch` below needs to be replaced with your own in order to save this pipe to your account. Best practices for aliases are to use your username as a prefix (e.g. `username-batch-csv-to-elasticsearch`).**
 
 ```javascript
   .save({
-    name: 'Webpage Thumbnail Generator',
-    ename: 'flexio-csv-to-elasticsearch-v1'
+    name: 'CSV to Elasticsearch',
+    ename: 'examples-batch-csv-to-elasticsearch'
   })
 ```
 
@@ -75,7 +75,7 @@ This is how you can run the saved pipe via an HTTP or cURL request:
 ```javascript
 $.ajax({
   type: 'POST',
-  url: 'https://www.flex.io/api/v1/pipes/YOUR_USERNAME-csv-to-elasticsearch-v1/run?flexio_api_key=YOUR_API_KEY',
+  url: 'https://www.flex.io/api/v1/pipes/username-batch-csv-to-elasticsearch/run?flexio_api_key=YOUR_API_KEY',
   data: {
     url: 'https://www.flex.io'
   },
@@ -84,7 +84,7 @@ $.ajax({
 ```
 
 ```
-curl -X POST 'https://www.flex.io/api/v1/pipes/YOUR_USERNAME-csv-to-elasticsearch-v1/run' \
+curl -X POST 'https://www.flex.io/api/v1/pipes/username-batch-csv-to-elasticsearch/run' \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   -d "url=https://www.flex.io" \
 ```
@@ -92,7 +92,7 @@ curl -X POST 'https://www.flex.io/api/v1/pipes/YOUR_USERNAME-csv-to-elasticsearc
 To use the pipe you've saved with this example, insert your own pipe alias and API key.
 
 ```
-  url: 'https://www.flex.io/api/v1/pipes/YOUR_USERNAME-csv-to-elasticsearch-v1/run?flexio_api_key=YOUR_API_KEY',
+  url: 'https://www.flex.io/api/v1/pipes/username-batch-csv-to-elasticsearch/run?flexio_api_key=YOUR_API_KEY',
 ```
 
 ## Get Help
