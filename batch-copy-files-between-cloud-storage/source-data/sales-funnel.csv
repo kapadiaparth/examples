@@ -1,0 +1,18 @@
+Account,Name,Rep,Manager,Product,Quantity,Price,Status
+882939,Melon Productions,Craig Booker,Joan Henley,Computer,1,32500,presented
+882939,Melon Productions,Craig Booker,Joan Henley,Software,1,12000,presented
+882939,Melon Productions,Craig Booker,Joan Henley,Maintenance,2,4000,pending
+747551,"Hamel, Johnson and Ellers",Craig Booker,Joan Henley,Computer,1,35000,declined
+221923,Ridgeco,Jonathan Hilton,Joan Henley,Computer,2,64000,won
+228894,"Deserprises, Inc.",Jonathan Hilton,Joan Henley,Computer,2,45000,pending
+228894,"Deserprises, Inc.",Jonathan Hilton,Joan Henley,Software,1,10000,presented
+512291,Jenkins-Hamlin,John Smith,Joan Henley,Maintenance,2,5000,pending
+740150,Voidscape LLC,John Smith,Joan Henley,Computer,1,35000,declined
+141962,Kopp LLC,Kevin Moss,Fred Ellers,Computer,2,65000,won
+163416,Dragger-Keeling,Kevin Moss,Fred Ellers,Computer,1,30000,presented
+239344,Ice Arts LLC,Kevin Moss,Fred Ellers,Maintenance,1,5000,pending
+239344,Ice Arts LLC,Kevin Moss,Fred Ellers,Software,1,10000,presented
+307599,"Metz, Hendricks and Walford",Wendy Yates,Fred Ellers,Maintenance,3,7000,won
+688981,Morton-Ellis LLC,Wendy Yates,Fred Ellers,Computer,5,110000,won
+729855,Wavigations Ltd.,Wendy Yates,Fred Ellers,Computer,2,65000,declined
+729855,Wavigations Ltd.,Wendy Yates,Fred Ellers,Monitor,2,5000,presented
