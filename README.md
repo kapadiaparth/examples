@@ -2,13 +2,13 @@ This repository contains examples that leverage the power of data pipes at [Flex
 
 We hope you'll use it to check out our work and to create pipes and apps of your own. The examples are available under the [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/) and the code is available under the [MIT License](http://opensource.org/licenses/MIT). If you do find it useful, please [let us know](mailto:hello@flex.io).
 
-## Batch Processing Examples
+### Batch Processing Examples
 
 Example | Location | Source
 :-------|----------|--------
 CSV to Elasticsearch | [CSV to Elasticsearch](https://flexiodata.github.io/examples/batch-csv-to-elasticsearch/) | [Source](https://github.com/flexiodata/examples/tree/master/batch-csv-to-elasticsearch)
 
-## Demo App Examples
+### Demo App Examples
 
 Example | Location | Source
 :-------|----------|--------
