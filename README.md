@@ -1,5 +1,3 @@
-This repository contains examples that leverage the power of data pipes at [Flex.io](https://www.flex.io).
-
 This repository contains examples that utilize the [Flex.io API](https://www.flex.io) for moving, processing and integrating data in the cloud.
 
 Please fork and utilize these examples at will; we hope you find them useful.  All code is available under the [MIT License](http://opensource.org/licenses/MIT); any other content is available under the [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
