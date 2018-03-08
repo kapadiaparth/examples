@@ -48,7 +48,7 @@ def flexio_handler(context):
 
 // NOTE: The alias `flexio-webpage-thumbnail-generator-v1` below needs to be replaced with your own in order to
 //       save this pipe to your account. Best practices for aliases are to use your username
-//       as a prefix (e.g. `username-webpage-thumbnail-generator-v1`)
+//       as a prefix (e.g. `{username}-webpage-thumbnail-generator-v1`)
 pipe.save({
   name: 'Webpage Thumbnail Generator',
   ename: 'flexio-webpage-thumbnail-generator-v1'

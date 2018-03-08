@@ -22,7 +22,7 @@ var pipe = Flexio.pipe()
 
 // NOTE: The alias `examples-batch-csv-to-elasticsearch` below needs to be replaced with your own in order
 //       to save this pipe to your account. Best practices for aliases are to use your username
-//       as a prefix (e.g. `username-batch-csv-to-elasticsearch`)
+//       as a prefix (e.g. `{username}-batch-csv-to-elasticsearch`)
 pipe.save({
   name: 'Copy CSV files to Elasticsearch',
   ename: 'examples-batch-csv-to-elasticsearch'
