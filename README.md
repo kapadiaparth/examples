@@ -1,6 +1,10 @@
 This repository contains examples that leverage the power of data pipes at [Flex.io](https://www.flex.io).
 
-We hope you'll use it to check out our work and to create pipes and apps of your own. The examples are available under the [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/) and the code is available under the [MIT License](http://opensource.org/licenses/MIT). If you do find it useful, please [let us know](mailto:hello@flex.io).
+This repository contains examples that utilize the [Flex.io API](https://www.flex.io) for moving, processing and integrating data in the cloud.
+
+Please fork and utilize these examples at will; we hope you find them useful.  All code is available under the [MIT License](http://opensource.org/licenses/MIT); any other content is available under the [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
+
+If you have question or would like more information, please feel free to email the Flex.io developer support team at [support@flex.io](mailto:support@flex.io?subject=Flex.io%20Examples%20Repo") or use the chat button at the bottom of the [Flex.io website](https://www.flex.io).
 
 ### Batch Processing Examples
 
