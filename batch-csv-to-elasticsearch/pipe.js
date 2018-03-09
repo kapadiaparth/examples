@@ -13,7 +13,7 @@ var pipe = Flexio.pipe()
   .write('/tutorial-elasticsearch/contacts.csv')
 
 // You may save your pipe in the Flex.io app, which enables a pipe endpoint to be called using an alias, via REST
-// API or cURL. Note that the alias `examples-batch-copy-files-between-cloud-storage` below needs to be replaced with
+// API or cURL. Note that the alias `examples-batch-csv-to-elasticsearch` below needs to be replaced with
 // your own alias in order to save this pipe to your account (e.g. `{username}-batch-csv-to-elasticsearch`).
 pipe.save({
   name: 'Copy CSV files to Elasticsearch',
