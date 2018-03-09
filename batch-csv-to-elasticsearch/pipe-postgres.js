@@ -5,8 +5,8 @@ var Flexio = require('flexio-sdk-js')
 // insert your API key here to use the Flex.io JS SDK with your account
 Flexio.setup('YOUR_API_KEY')
 
-// This is the Flex.io pipe which encapsulates all of the logic
-// required to read the CSV files and output them to Elasticsearch
+// This is the Flex.io pipe logic to read a table from Posgres and write it to Elasticsearch
+// Note that the aliases below will need to be replaced with your connection aliases (e.g. `{username}-postgres`)
 var pipe = Flexio.pipe()
   .read('/tutorial-postgres/contacts')
   .write('tutorial-elasticsearch/contacts')
