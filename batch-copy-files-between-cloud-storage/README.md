@@ -50,7 +50,7 @@ Flexio.pipe()
       .write('/tutorial-dropbox/backup-${process.time.unix}/${item.name}')
 ```
 
-All Flex.io pipes start with `Flexio.pipe()`. Tasks in a pipe are chained together using periods similar to how jQuery and other APIs chain calls together.  The `list` task accesses the directory, the `foreach` task is a loop to `read` each file from the list and `write` out to your output connection (`read` and `write` both use aliases of the connection you set up in the Flex.io app).  [Here is a guide on setting up a connection in Flex.io.](https://www.flex.io/docs).
+All Flex.io pipes start with `Flexio.pipe()`. Tasks in a pipe are chained together using periods similar to how jQuery and other APIs chain calls together.  The `list` task accesses the directory, the `foreach` task is a loop to `read` each file from the list and `write` out to your output connection (`read` and `write` both use aliases of the connection you set up in the Flex.io app).  [Here is a guide on setting up a connection in Flex.io](https://www.flex.io/docs).
 
 
 ### Running the pipe in your Javascript code
