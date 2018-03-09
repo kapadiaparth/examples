@@ -6,11 +6,11 @@
     <title>Contact Refinement</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.6.1/tachyons.min.css" integrity="sha256-eu1dpzpUytdOAUmB67Qi3mBb6HFjruP8BoAzk4lKiSc=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.1/load5.css"/>
-    
+
     <!-- site css goes here -->
     <style>
       .darken-10:hover,
@@ -131,10 +131,7 @@
 
           $.ajax({
             type: 'post',
-            url: 'https://www.flex.io/api/v1/pipes/flexio-contact-refinement-v1/run?stream=0',
-            beforeSend: function(xhr) {
-              xhr.setRequestHeader('Authorization', 'Bearer nmgzsqppgwqbvkfhjdjd');
-            },
+            url: 'https://www.flex.io/api/v1/pipes/examples-demo-contact-refinement/run?flexio_api_key=rryrjgqhvtdttzzsjpjr',
             data: $('form').serialize(),
             dataType: "json",
             success: function (rows) {
