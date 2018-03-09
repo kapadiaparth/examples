@@ -46,7 +46,7 @@ Flexio.pipe()
   .write('/tutorial-elasticsearch/contacts.csv')
 ```
 
-All Flex.io pipes start with `Flexio.pipe()`. Tasks in a pipe are chained together using periods similar to how jQuery and other APIs chain calls together.  The `read` and `write` tasks use an alias of your connection.  [Here is a guide on setting up a connection in Flex.io.](https://www.flex.io/docs).
+All Flex.io pipes start with `Flexio.pipe()`. Tasks in a pipe are chained together using periods similar to how jQuery and other APIs chain calls together.  The `read` and `write` tasks use an alias of your connection.  [Here is a guide on setting up a connection in Flex.io](https://www.flex.io/docs).
 
 
 ### Running the pipe in your Javascript code
