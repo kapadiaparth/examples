@@ -8,7 +8,8 @@ If you have question or would like more information, please feel free to email t
 
 Example | Location | Source
 :-------|----------|--------
-CSV to Elasticsearch | [CSV to Elasticsearch](https://flexiodata.github.io/examples/batch-csv-to-elasticsearch/) | [Source](https://github.com/flexiodata/examples/tree/master/batch-csv-to-elasticsearch)
+Copy Files Between Cloud Storage | [Copy Files Between Cloud Storage](https://flexiodata.github.io/examples/batch-copy-files-between-cloud-storage/) | [Source](https://github.com/flexiodata/examples/tree/master/batch-copy-files-between-cloud-storage)
+Bulk Load CSV Files into Elasticsearch | [Bulk Load CSV Files into Elasticsearch](https://flexiodata.github.io/examples/batch-csv-to-elasticsearch/) | [Source](https://github.com/flexiodata/examples/tree/master/batch-csv-to-elasticsearch)
 
 ### Demo App Examples
 
