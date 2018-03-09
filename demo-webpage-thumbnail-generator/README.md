@@ -1,4 +1,4 @@
-# Webpage Text Bubble Chart
+# Webpage Thumbnail Generator
 
 This demo uses the Flex.io Javascript SDK to load the HTML contents of the webpage and output it as a PNG image.
 
