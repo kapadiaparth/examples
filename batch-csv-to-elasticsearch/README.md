@@ -4,7 +4,9 @@ This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-
 
 ## Overview
 
-[Flex.io](http://Flex.io)  is an API for moving, processing and integrating data in the cloud that helps developers build and deploy scalable data feeds with just a few lines of code. This repo provides the source data and pipes used in the [Bulk Load CSV Files into Elasticsearch Indices](https://www.flex.io/docs/tutorials/bulk-load-csv-files-elasticsearch-indices) tutorial.
+[Flex.io](http://Flex.io)  is an API for moving, processing and integrating data in the cloud that helps developers build and deploy scalable data feeds with just a few lines of code. 
+
+This repo provides the source data and pipes used in the [Bulk Load CSV Files into Elasticsearch Indices](https://www.flex.io/docs/tutorials/copy-transfer-files-cloud-storage-s3-dropbox) tutorial.
 
 
 ## Installation
