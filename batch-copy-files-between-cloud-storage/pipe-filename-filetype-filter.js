@@ -5,8 +5,9 @@ var Flexio = require('flexio-sdk-js')
 // insert your API key here to use the Flex.io JS SDK with your account
 Flexio.setup('YOUR_API_KEY')
 
-// TODO (replace with your text): This is the Flex.io pipe which encapsulates all of the logic
-// required to read the CSV files and output them to Elasticsearch
+// This is the Flex.io pipe logic to read all files named `myfile` regardless of extension, from an AWS S3
+// and write them to Dropbox.
+// Note that the aliases below will need to be replaced with your connection aliases (e.g. `{username}-s3`).
 var pipe = Flexio.pipe()
   .list('/tutorial-s3/myfile.*')
   .foreach(
@@ -15,7 +16,7 @@ var pipe = Flexio.pipe()
       .write('/tutorial-dropbox/backup-${process.time.unix}/${item.name}')
   )
 
-// You may save your pipe to your Flex.io account, which enables a pipe endpoint to be called using an alias, via our
+// You may save this pipe to your Flex.io account, which enables a pipe endpoint to be called using an alias, via our
 // REST API or cURL. Note that the alias `examples-batch-copy-files-between-cloud-storage` below needs to be replaced
 // with your own alias in order to save this pipe to your account (e.g. `{username}-batch-copy-files-between-cloud-storage`)
 pipe.save({
