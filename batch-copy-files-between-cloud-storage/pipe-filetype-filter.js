@@ -5,7 +5,7 @@ var Flexio = require('flexio-sdk-js')
 // insert your API key here to use the Flex.io JS SDK with your account
 Flexio.setup('YOUR_API_KEY')
 
-// This is the Flex.io pipe logic to read CSV files from AWS S3 and write it to Dropbox
+// This is the Flex.io pipe logic to read all CSV files from an AWS S3 directory and write them to Dropbox
 // Note that the aliases below will need to be replaced with your connection aliases (e.g. `{username}-s3`)
 var pipe = Flexio.pipe()
   .list('/tutorial-s3/*.csv')
