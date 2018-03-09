@@ -7,7 +7,7 @@ Flexio.setup('YOUR_API_KEY')
 
 // This is the Flex.io pipe logic to read call logs from the Twilio API, converts from JSON to table, performs 
 // some preprocessing withPython and the pandas library and then writes the file to Elasticsearch.
-// Note that the aliases below will need to be replaced with your connection aliases (e.g. `{username}-dropbox`)
+// Note that the aliases below will need to be replaced with your connection aliases (e.g. `{username}-twilio`)
 var pipe = Flexio.pipe()
   .read('/tutorial-twilio/calls')
   .convert('json', 'table')
