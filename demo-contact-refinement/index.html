@@ -23,6 +23,22 @@
 
     <!-- site css goes here -->
     <style>
+      html, body {
+        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        height: 100%;
+        margin: 0;
+      }
+
+      /* Same as .flex-auto in Tachyons except without the 'auto' flex-basis */
+
+      .flex-fill {
+        flex: 1 1;
+        min-width: 0; /* 1 */
+        min-height: 0; /* 1 */
+      }
+
+      /* Button hover */
+
       .darken-10:hover,
       .darken-10:focus {
         box-shadow: inset 9999px 9999px rgba(0,0,0,0.10)
