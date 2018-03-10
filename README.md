@@ -36,6 +36,8 @@ If you have question or would like more information, please feel free to email t
 | Example | Location | Source |
 |:--------|:---------|:------:|
 
+----
+
 ## Contributing
 
 Do you have an example you'd like to share? We are happy to accept more examples from the community.
