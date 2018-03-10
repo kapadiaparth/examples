@@ -73,7 +73,7 @@ You may save this pipe to your Flex.io account, which enables a pipe endpoint to
   })
 ```
 
-### Running a saved pipe
+### Deploying the pipe
 
 This is how you can run the saved pipe via an HTTP or cURL request:
 
