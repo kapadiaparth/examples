@@ -111,7 +111,7 @@ def flexio_handler(context):
 
 ### Convert
 
-The `convert` task allows you to convert the input from one format to another. In this particular step, we'll convert the out of the Python script above from JSON into a tabular format.
+The `convert` task allows you to convert the input from one format to another. In this particular step, we'll convert the output of the Python script above from JSON into a tabular format.
 
 ```javascript
   .convert('json', 'table')
