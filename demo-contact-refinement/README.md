@@ -48,7 +48,7 @@ The `request` task allows you to request the contents of a specific URL. Doing t
 
 ### Convert
 
-The `convert` task allows you to convert the input from one format to another. In this particular step, we'll convert the output of the request task above from CSV into a tabular format.
+The `convert` task allows you to convert the input from one format to another. In this particular step, we'll convert the CSV file from the previous step into a tabular format.
 
 ```javascript
   .convert('csv', 'table')
