@@ -10,14 +10,16 @@ If you have question or would like more information, please feel free to email t
 
 ## Examples
 
-#### Batch Processing Examples
+### Batch Processing Examples
 
 | Example | Source |
 |:--------|--------|
 | **Copy Files Between Cloud Storage** <br/> Copy files between cloud storage providers such as AWS S3 and Dropbox. | [Source](https://github.com/flexiodata/examples/tree/master/batch-copy-files-between-cloud-storage) |
 | **Bulk Load CSV Files into Elasticsearch** <br/> Copy CSV files cloud storage providers into Elasticsearch. | [Source](https://github.com/flexiodata/examples/tree/master/batch-csv-to-elasticsearch) |
 
-#### Demo App Examples
+----
+
+### Demo App Examples
 
 | Example | Demo App | Source |
 |:--------|:---------|:------:|
@@ -27,7 +29,9 @@ If you have question or would like more information, please feel free to email t
 | **Webpage Thumbnail Generator** <br/> Load the HTML contents of the webpage and output it as a PNG image. | [Webpage Thumbnail Generator](https://flexiodata.github.io/examples/demo-webpage-thumbnail-generator/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-webpage-thumbnail-generator) |
 | **Webpage Word Cloud Generator** <br/> Parse the HTML contents of the webpage and return a wordcloud of the words on that page. | [Webpage Word Cloud Generator](https://flexiodata.github.io/examples/demo-webpage-word-cloud-generator/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-webpage-word-cloud-generator) |
 
-#### Community Examples
+----
+
+### Community Examples
 
 | Example | Location | Source |
 |:--------|:---------|:------:|
