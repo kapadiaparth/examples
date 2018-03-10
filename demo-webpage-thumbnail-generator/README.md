@@ -110,7 +110,7 @@ curl -X POST 'https://www.flex.io/api/v1/pipes/{username}-demo-webpage-thumbnail
   -d "url=https://www.flex.io" \
 ```
 
-To use the pipe you've saved with this example, edit [line 105 of the index.html](./index.html#L67) file and insert your API key.
+To use the pipe in this example, edit [line 105 of the index.html](./index.html#L105) file and insert your API key. Since the pipe inlined in the Javascript, it can be used immediately without needing to be saved.
 
 ## Get Help
 
