@@ -14,8 +14,8 @@ If you have question or would like more information, please feel free to email t
 
 | Example | Source |
 |:--------|--------|
-| **Copy Files Between Cloud Storage** <br/> Copy files between cloud storage providers such as AWS S3 and Dropbox. | [Source](https://github.com/flexiodata/examples/tree/master/batch-copy-files-between-cloud-storage) |
-| **Bulk Load CSV Files into Elasticsearch** <br/> Copy CSV files cloud storage providers into Elasticsearch. | [Source](https://github.com/flexiodata/examples/tree/master/batch-csv-to-elasticsearch) |
+| **Copy Files Between Cloud Storage** <br/> Copy files between cloud storage providers such as AWS S3 and Dropbox. Optionally filter the file transfer based on file name, file size and modified date. | [Source](https://github.com/flexiodata/examples/tree/master/batch-copy-files-between-cloud-storage) |
+| **Bulk Load CSV Files into Elasticsearch** <br/> Copy CSV files cloud storage providers into Elasticsearch. Optionally load from an API, like Twilio or a database, like Postgres. | [Source](https://github.com/flexiodata/examples/tree/master/batch-csv-to-elasticsearch) |
 
 ----
 
