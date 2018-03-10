@@ -108,6 +108,6 @@ curl -X POST 'https://www.flex.io/api/v1/pipes/{username}-demo-webpage-thumbnail
 
 To use the pipe you've saved with this example, edit [line 105 of the index.html](./index.html#L67) file and insert your API key.
 
-## Conclusion
+## Get Help
 
-We hope you've enjoyed stepping through this demo and have found it useful. If you have question or would like more information, please feel free to email the [Flex.io developer support team](support@flex.io).
+If you have question or would like more information, please feel free to email the [Flex.io developer support team](support@flex.io) or the chat button at the bottom of the [Flex.io website](https://www.flex.io).
