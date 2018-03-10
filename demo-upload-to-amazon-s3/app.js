@@ -21,9 +21,9 @@
       // read the file from from the HTML upload form into the pipe
       .read("context://files/myfile")
       // write the file to the Flex.io S3 connection
-      .write("/flexio-filetrans-demo/${filename}")
+      .write("/flexio-public-s3/${filename}")
       // output the URL of the file on S3 using the `filename` variable from above
-      .echo('https://s3.amazonaws.com/flexio-filetrans-demo/${filename}')
+      .echo('https://s3.amazonaws.com/flexio-public-s3/${filename}')
       // run the pipe
       .run({ data: formdata }, function(err, response) {
         document.getElementById('info').innerHTML = '' +
