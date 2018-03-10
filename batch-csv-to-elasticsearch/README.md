@@ -70,7 +70,7 @@ Once you have prototyped your pipe, you may save it for later use. Saving a pipe
   })
 ```
 
-### Running a saved pipe
+### Deploying the pipe
 
 This is how you can run the saved pipe via an HTTP or cURL request:
 
