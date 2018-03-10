@@ -16,7 +16,7 @@ Each example contains a `README.md` with an explanation of what it does and how 
 node pipe.js
 ```
 
-Have an example? Submit a PR or open an issue.
+**Have an example?** Submit a PR or open an issue.
 
 ### Batch Processing Examples
 
