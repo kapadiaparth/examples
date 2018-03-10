@@ -1,6 +1,6 @@
 (function(window, document, Flexio, undefined) {
   // setup Flexio SDK with our API key
-  Flexio.setup('nvwfvkrjtyfwtxxddbmc')
+  Flexio.setup('rryrjgqhvtdttzzsjpjr')
 
   var form = document.getElementById('upload-form')
   var file_input = document.getElementById('file')
