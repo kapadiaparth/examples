@@ -48,7 +48,7 @@ The `read` task allows you to read the contents of file that is located in local
 
 ### Filter
 
-The `filter` task allows us to output a reduced set of data from the input by apply a `where` condition. The value we'll filter on is `${form.year}` which comes from the `year` POST parameter.
+The `filter` task allows us to output a reduced set of data from the input by applying a `where` condition. The value we'll filter on is `${form.year}` which comes from the `year` POST parameter.
 
 ```javascript
   .filter("year = '${form.year}'")

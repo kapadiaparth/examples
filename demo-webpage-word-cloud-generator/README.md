@@ -119,7 +119,7 @@ The `convert` task allows you to convert the input from one format to another. I
 
 ### Filter
 
-The `filter` task allows us to output a reduced set of data from the input by apply a `where` condition.
+The `filter` task allows us to output a reduced set of data from the input by applying a `where` condition. The values we'll filter on are `${form.min_threshold}` and `${form.max_threshold}` which come from the `min_threshold` and `max_threshold` POST parameters, respectively.
 
 ```javascript
   .filter('to_number(value) >= ${form.min_threshold} and to_number(value) <= ${form.max_threshold}')
