@@ -1,10 +1,10 @@
 # Contact Refinement
 
-This demo uses the Flex.io Javascript SDK to parse the HTML contents of the webpage and return a wordcloud of the words on that page.
+This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-sdk/) to request a CSV from GitHub, convert it to a table, select a subset of columns, transform the result to uppercase and output the result in JSON.
 
 ## Overview
 
-Flex.io is the API for data feeds. In this demo, we'll take you through the steps necessary to create a serverless data feed which parses a webpage and returns a JSON payload of the most-used words.
+[Flex.io](http://Flex.io) is an API for moving, processing and integrating data in the cloud that helps developers build and deploy scalable data feeds with just a few lines of code. 
 
 ## Demo
 
@@ -22,7 +22,7 @@ npm install flexio-sdk-js
 
 ## Setup
 
-You will need an API key in order to use the Flex.io Javascript SDK. You can generate an API key by logging into your account on Flex.io.
+You will need an API key in order to use the Flex.io Javascript SDK. You can sign up for a [Free Flex.io API Key here](https://www.flex.io/app/signup).
 
 ```javascript
 Flexio.setup('YOUR_API_KEY')
@@ -40,90 +40,31 @@ Flexio.pipe()
 
 ### Request
 
-The `request` task allows you to request the contents of a specific URL. Doing the following will issue a web request to get the contents of the Flex.io homepage.
+The `request` task allows you to request the contents of a specific URL. Doing the following will issue a web request to get the contents of the `contacts-ltd1.csv` file on GitHub.
 
 ```javascript
-  .request('https://www.flex.io')
-```
-
-This isn't necessarily ideal, though, as we will want to run this pipe against any valid webpage URL. To do this, we'll use a POST variable in the `request` task:
-
-```javascript
-  .request('${form.url}')
-```
-
-### Python
-
-The `python` tasks allows you to run Python code inside of the Flex.io pipe in order to generate new content or to manipulate other content in the pipe. We will use two small Python scripts in this pipe.
-
-The first Python script uses [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/) to parse the HTML of webpage specified in the `request` task above. The Python script interacts with the Flex.io pipe via the `content.input.read()` and `content.output.write()` methods. The Flex.io code handler `def flexio_handler(context):` is required.
-
-```python
-  .python(`
-from bs4 import BeautifulSoup
-
-def flexio_handler(context):
-
-    content = context.input.read()
-    soup = BeautifulSoup(content, "html.parser")
-    for script in soup(["script", "style"]):
-        script.extract()
-    text = soup.get_text()
-    lines = (line.strip() for line in text.splitlines())
-    chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
-    text = '\\n'.join(chunk for chunk in chunks if chunk)
-    context.output.content_type = 'text/plain'
-    context.output.write(text.encode('utf-8','ignore'))
-`)
-```
-
-The second Python script removes non-ascii characters and returns an array of JSON objects with { id, value } keypairs.
-
-```python
-  .python(`
-import json
-from collections import defaultdict
-
-def remove_non_ascii(text):
-    return ''.join([i if ord(i) < 128 else ' ' for i in text])
-
-def flexio_handler(context):
-
-    content = context.input.read()
-    content = content.decode()
-    content = content.lower()
-
-    d = defaultdict(int)
-    for word in content.split():
-        if len(word) > 3:
-            d[word] += 1
-
-    result = []
-    for key, value in d.items():
-        if value > 1:
-            i = {"id": remove_non_ascii(key), "value": value}
-            result.append(i)
-
-    context.output.content_type = "application/json"
-    context.output.write(json.dumps(result))
-`)
+  .request('https://raw.githubusercontent.com/flexiodata/examples/master/demo-contact-refinement/contacts-ltd1.csv')
 ```
 
 ### Convert
 
-The `convert` task allows you to convert the input from one format to another. In this particular step, we'll convert the out of the Python script above from JSON into a tabular format.
+The `convert` task allows you to convert the input from one format to another. In this particular step, we'll convert the output of the request task above from CSV into a tabular format.
 
 ```javascript
-  .convert('json', 'table')
+  .convert('csv', 'table')
 ```
 
-### Filter
+### Select
 
-The `filter` task allows us to output a reduced set of data from the input by apply a `where` condition.
+The `select` task allows us to choose certain columns from the input table and only output those columns to the next step.
 
 ```javascript
-  .filter('to_number(value) >= ${form.min_threshold} and to_number(value) <= ${form.max_threshold}')
+  .select("givenname","surname","streetaddress","city","state","zipcode")
 ```
+
+### Convert
+
+The `convert` task allows us to transform the contents of the previous step.
 
 ### Running the pipe in your Javascript code
 
@@ -153,9 +94,7 @@ $.ajax({
   type: 'POST',
   url: 'https://www.flex.io/api/v1/pipes/{username}-demo-contact-refinement/run?flexio_api_key=YOUR_API_KEY',
   data: {
-    url: 'https://www.flex.io',
-    min_threshold: 5,
-    max_threshold: 10000
+    state: 'IL'
   },
   dataType: 'json'
 })
@@ -164,12 +103,10 @@ $.ajax({
 ```
 curl -X POST 'https://www.flex.io/api/v1/pipes/{username}-demo-contact-refinement/run' \
   -H 'Authorization: Bearer YOUR_API_KEY' \
-  -d "url=https://www.flex.io" \
-  -d "min_threshold=5" \
-  -d "max_threshold=10000"
+  -d "state=IL" 
 ```
 
-To use the pipe you've saved with this example, edit line 221 of the [index.html](./index.html#L221) file and insert your pipe alias and API key.
+To use the pipe you've saved with this example, edit line 166 of the [index.html](./index.html#L166) file and insert your pipe alias and API key.
 
 ```
   url: 'https://www.flex.io/api/v1/pipes/{username}-demo-contact-refinement/run?flexio_api_key=YOUR_API_KEY',
