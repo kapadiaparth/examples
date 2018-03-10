@@ -1,10 +1,10 @@
 # Webpage Word Cloud Generator
 
-This demo uses the Flex.io Javascript SDK to parse the HTML contents of the webpage and return a wordcloud of the words on that page.
+This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-sdk/) to parse the HTML contents of the webpage, construct a [D3.js](https://d3js.org/) visualization from it and return a wordcloud of the words on that page.
 
 ## Overview
 
-Flex.io is the API for data feeds. In this demo, we'll take you through the steps necessary to create a serverless data feed which parses a webpage and returns a JSON payload of the most-used words.
+[Flex.io](http://Flex.io) is an API for moving, processing and integrating data in the cloud that helps developers build and deploy scalable data feeds with just a few lines of code. 
 
 ## Demo
 
@@ -22,7 +22,7 @@ npm install flexio-sdk-js
 
 ## Setup
 
-You will need an API key in order to use the Flex.io Javascript SDK. You can generate an API key by logging into your account on Flex.io.
+You will need an API key in order to use the Flex.io Javascript SDK. You can sign up for a [Free Flex.io API Key here](https://www.flex.io/app/signup).
 
 ```javascript
 Flexio.setup('YOUR_API_KEY')
@@ -145,6 +145,8 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
     ename: 'examples-demo-webpage-word-cloud-generator'
   })
 ```
+
+## Deploying the pipe
 
 This is how you can run the saved pipe via an HTTP or cURL request:
 
