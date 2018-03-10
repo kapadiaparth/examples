@@ -4,7 +4,7 @@ This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-
 
 ## Overview
 
-[Flex.io](http://Flex.io) is an API for moving, processing and integrating data in the cloud that helps developers build and deploy scalable data feeds with just a few lines of code. 
+[Flex.io](http://Flex.io) is an API for moving, processing and integrating data in the cloud that helps developers build and deploy scalable data feeds with just a few lines of code.
 
 This repo provides the source data and pipes used in the [Bulk Load CSV Files into Elasticsearch Indices](https://www.flex.io/docs/tutorials/copy-transfer-files-cloud-storage-s3-dropbox) tutorial.
 
@@ -74,6 +74,8 @@ Once you have prototyped your pipe, you may save it for later use. Saving a pipe
 
 This is how you can run the saved pipe via an HTTP or cURL request:
 
+##### HTTP
+
 ```javascript
 $.ajax({
   type: 'POST',
@@ -84,6 +86,8 @@ $.ajax({
   dataType: 'json'
 })
 ```
+
+##### cURL
 
 ```
 curl -X POST 'https://www.flex.io/api/v1/pipes/{username}-batch-csv-to-elasticsearch/run' \

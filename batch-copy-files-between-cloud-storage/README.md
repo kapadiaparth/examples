@@ -4,7 +4,7 @@ This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-
 
 ## Overview
 
-[Flex.io](http://Flex.io) is an API for moving, processing and integrating data in the cloud that helps developers build and deploy scalable data feeds with just a few lines of code. 
+[Flex.io](http://Flex.io) is an API for moving, processing and integrating data in the cloud that helps developers build and deploy scalable data feeds with just a few lines of code.
 
 This repo provides the source data and pipes used in the [Copy and Transfer Files between Cloud Storage](https://www.flex.io/docs/tutorials/bulk-load-csv-files-elasticsearch-indices) tutorial.
 
@@ -77,6 +77,8 @@ You may save this pipe to your Flex.io account, which enables a pipe endpoint to
 
 This is how you can run the saved pipe via an HTTP or cURL request:
 
+##### HTTP
+
 ```javascript
 $.ajax({
   type: 'POST',
@@ -87,6 +89,8 @@ $.ajax({
   dataType: 'json'
 })
 ```
+
+##### cURL
 
 ```
 curl -X POST 'https://www.flex.io/api/v1/pipes/{username}-batch-copy-files-between-cloud-storage/run' \

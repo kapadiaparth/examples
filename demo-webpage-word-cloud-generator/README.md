@@ -4,7 +4,7 @@ This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-
 
 ## Overview
 
-[Flex.io](http://Flex.io) is an API for moving, processing and integrating data in the cloud that helps developers build and deploy scalable data feeds with just a few lines of code. 
+[Flex.io](http://Flex.io) is an API for moving, processing and integrating data in the cloud that helps developers build and deploy scalable data feeds with just a few lines of code.
 
 ## Demo
 
@@ -150,6 +150,8 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
 
 This is how you can run the saved pipe via an HTTP or cURL request:
 
+##### HTTP
+
 ```javascript
 $.ajax({
   type: 'POST',
@@ -162,6 +164,8 @@ $.ajax({
   dataType: 'json'
 })
 ```
+
+##### cURL
 
 ```
 curl -X POST 'https://www.flex.io/api/v1/pipes/{username}-demo-webpage-word-cloud-generator/run' \
