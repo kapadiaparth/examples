@@ -83,7 +83,7 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
   })
 ```
 
-### Deploying the pipe
+## Deploying the pipe
 
 This is how you can run the saved pipe via an HTTP or cURL request:
 
