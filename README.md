@@ -10,7 +10,7 @@ If you have question or would like more information, please feel free to email t
 
 ## Examples
 
-##### Batch Processing Examples
+#### Batch Processing Examples
 
 | Example | Source |
 |:--------|--------|
@@ -19,7 +19,7 @@ If you have question or would like more information, please feel free to email t
 
 &nbsp;
 
-##### Demo App Examples
+#### Demo App Examples
 
 | Example | Demo App | Source |
 |:--------|:---------|:------:|
@@ -31,7 +31,7 @@ If you have question or would like more information, please feel free to email t
 
 &nbsp;
 
-##### Community Examples
+#### Community Examples
 
 | Example | Location | Source |
 |:--------|:---------|:------:|
