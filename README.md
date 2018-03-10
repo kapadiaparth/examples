@@ -12,25 +12,25 @@ If you have question or would like more information, please feel free to email t
 
 #### Batch Processing Examples
 
-| Example | Location | Source |
-|---------|----------|--------|
-| **Copy Files Between Cloud Storage** <br/> Copy files between cloud storage providers such as AWS S3 and Dropbox. | [Copy Files Between Cloud Storage](https://flexiodata.github.io/examples/batch-copy-files-between-cloud-storage/) | [Source](https://github.com/flexiodata/examples/tree/master/batch-copy-files-between-cloud-storage) |
-| **Bulk Load CSV Files into Elasticsearch** <br/> Copy CSV files cloud storage providers into Elasticsearch. | [Bulk Load CSV Files into Elasticsearch](https://flexiodata.github.io/examples/batch-csv-to-elasticsearch/) | [Source](https://github.com/flexiodata/examples/tree/master/batch-csv-to-elasticsearch) |
+| Example | Source |
+|:--------|--------|
+| **Copy Files Between Cloud Storage** <br/> Copy files between cloud storage providers such as AWS S3 and Dropbox. | [Source](https://github.com/flexiodata/examples/tree/master/batch-copy-files-between-cloud-storage) |
+| **Bulk Load CSV Files into Elasticsearch** <br/> Copy CSV files cloud storage providers into Elasticsearch. | [Source](https://github.com/flexiodata/examples/tree/master/batch-csv-to-elasticsearch) |
 
 #### Demo App Examples
 
-| Example | Location | Source |
-|---------|----------|--------|
+| Example | Demo App | Source |
+|:--------|:---------|:------:|
 | **Chicago Crime Map** | [Chicago Crime Map](https://flexiodata.github.io/examples/demo-chicago-crime-map/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-chicago-crime-map) |
 | **Contact Refinement** | [Contact Refinement](https://flexiodata.github.io/examples/demo-contact-refinement/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-contact-refinement) |
 | **Saastr Podcast Search** | [Saastr Podcast Search](https://flexiodata.github.io/examples/demo-saastr-podcast-search/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-saastr-podcast-search) |
-| **Webpage Thumbnail Generator** | [Webpage Thumbnail Generator](https://flexiodata.github.io/examples/demo-webpage-thumbnail-generator/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-webpage-thumbnail-generator) |
-| **Webpage Word Cloud Generator** | [Webpage Word Cloud Generator](https://flexiodata.github.io/examples/demo-webpage-word-cloud-generator/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-webpage-word-cloud-generator) |
+| **Webpage Thumbnail Generator** <br/> Load the HTML contents of the webpage and output it as a PNG image. | [Webpage Thumbnail Generator](https://flexiodata.github.io/examples/demo-webpage-thumbnail-generator/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-webpage-thumbnail-generator) |
+| **Webpage Word Cloud Generator** <br/> Parse the HTML contents of the webpage and return a wordcloud of the words on that page. | [Webpage Word Cloud Generator](https://flexiodata.github.io/examples/demo-webpage-word-cloud-generator/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-webpage-word-cloud-generator) |
 
 #### Community Examples
 
 | Example | Location | Source |
-|---------|----------|--------|
+|:--------|:---------|:------:|
 
 ## Contributing
 
