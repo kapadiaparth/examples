@@ -10,6 +10,14 @@ If you have question or would like more information, please feel free to email t
 
 ## Examples
 
+Each example contains a `README.md` with an explanation of what it does and how it works. Each example also includes at least one `pipe.js` file can be used to install the pipe in your Flex.io account:
+
+```
+node pipe.js
+```
+
+Have an example? Submit a PR or open an issue.
+
 ### Batch Processing Examples
 
 | Example | Source |
