@@ -1,6 +1,6 @@
 # Webpage Word Cloud Generator
 
-This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-sdk/) to parse the HTML contents of the webpage, construct a [D3.js](https://d3js.org/) visualization from it and return a wordcloud of the words on that page.
+This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-sdk/) to parse the HTML contents of the webpage and return a wordcloud of the words on that page.
 
 ## Overview
 
