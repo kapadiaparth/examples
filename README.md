@@ -26,7 +26,7 @@ If you have question or would like more information, please feel free to email t
 | **Chicago Crime Map** | [Chicago Crime Map](https://flexiodata.github.io/examples/demo-chicago-crime-map/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-chicago-crime-map) |
 | **Contact Refinement** | [Contact Refinement](https://flexiodata.github.io/examples/demo-contact-refinement/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-contact-refinement) |
 | **Saastr Podcast Search** | [Saastr Podcast Search](https://flexiodata.github.io/examples/demo-saastr-podcast-search/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-saastr-podcast-search) |
-| **Webpage Thumbnail Generator** <br/> Load the HTML contents of the webpage and output it as a PNG image. | [Webpage Thumbnail Generator](https://flexiodata.github.io/examples/demo-webpage-thumbnail-generator/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-webpage-thumbnail-generator) |
+| **Webpage Thumbnail Generator** <br/> Load the HTML contents of the webpage, reduce it in size to a thumbnail and output it as a PNG image. | [Webpage Thumbnail Generator](https://flexiodata.github.io/examples/demo-webpage-thumbnail-generator/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-webpage-thumbnail-generator) |
 | **Webpage Word Cloud Generator** <br/> Parse the HTML contents of the webpage and return a wordcloud of the words on that page. | [Webpage Word Cloud Generator](https://flexiodata.github.io/examples/demo-webpage-word-cloud-generator/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-webpage-word-cloud-generator) |
 
 ----
