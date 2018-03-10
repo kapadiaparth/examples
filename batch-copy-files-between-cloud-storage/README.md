@@ -4,7 +4,7 @@ This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-
 
 ## Overview
 
-[Flex.io](http://Flex.io)  is an API for moving, processing and integrating data in the cloud that helps developers build and deploy scalable data feeds with just a few lines of code. 
+[Flex.io](http://Flex.io) is an API for moving, processing and integrating data in the cloud that helps developers build and deploy scalable data feeds with just a few lines of code. 
 
 This repo provides the source data and pipes used in the [Copy and Transfer Files between Cloud Storage](https://www.flex.io/docs/tutorials/bulk-load-csv-files-elasticsearch-indices) tutorial.
 
