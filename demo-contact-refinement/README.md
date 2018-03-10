@@ -62,9 +62,9 @@ The `select` task allows us to choose certain columns from the input table and o
   .select("givenname","surname","streetaddress","city","state","zipcode")
 ```
 
-### Convert
+### Transform
 
-The `convert` task allows us to transform the contents of the previous step.
+The `transform` task allows us to transform the contents of the previous step. In this particular case, we'll simply capitalize all of the text.
 
 ### Running the pipe in your Javascript code
 
