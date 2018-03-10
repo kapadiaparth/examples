@@ -126,6 +126,6 @@ To use the pipe you've saved with this example, edit [line 148 of the index.html
   url: 'https://www.flex.io/api/v1/pipes/{username}-demo-saastr-podcast-search/run?flexio_api_key=YOUR_API_KEY',
 ```
 
-## Conclusion
+## Get Help
 
-We hope you've enjoyed stepping through this demo and have found it useful. If you have question or would like more information, please feel free to email the [Flex.io developer support team](support@flex.io).
+If you have question or would like more information, please feel free to email the [Flex.io developer support team](support@flex.io) or the chat button at the bottom of the [Flex.io website](https://www.flex.io).
