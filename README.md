@@ -10,14 +10,20 @@ If you have question or would like more information, please feel free to email t
 
 ## Examples
 
+Each example contains a `README.md` with an explanation of what it does and how it works. Each example also includes at least one `pipe.js` file that can be used to install the pipe in your Flex.io account:
+
+```
+node pipe.js
+```
+
+**Have an example?** Submit a PR or [open an issue](https://github.com/flexiodata/examples/issues).
+
 ### Batch Processing Examples
 
 | Example | Source |
 |:--------|--------|
 | **Copy Files Between Cloud Storage** <br/> Copy files between cloud storage providers such as AWS S3 and Dropbox. Filter the file transfer based on file name, file size and modified date. | [Source](https://github.com/flexiodata/examples/tree/master/batch-copy-files-between-cloud-storage) |
 | **Bulk Load CSV Files into Elasticsearch** <br/> Copy CSV files cloud storage providers into Elasticsearch. Load from an API, like Twilio or a database, like Postgres. | [Source](https://github.com/flexiodata/examples/tree/master/batch-csv-to-elasticsearch) |
-
-----
 
 ### Demo App Examples
 
@@ -29,14 +35,10 @@ If you have question or would like more information, please feel free to email t
 | **Webpage Thumbnail Generator** <br/> Load the HTML contents of the webpage, reduce it in size to a thumbnail and output it as a PNG image. | [Webpage Thumbnail Generator](https://flexiodata.github.io/examples/demo-webpage-thumbnail-generator/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-webpage-thumbnail-generator) |
 | **Webpage Word Cloud Generator** <br/> Parse the HTML contents of the webpage and return a wordcloud of the words on that page. | [Webpage Word Cloud Generator](https://flexiodata.github.io/examples/demo-webpage-word-cloud-generator/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-webpage-word-cloud-generator) |
 
-----
-
 ### Community Examples
 
 | Example | Location | Source |
 |:--------|:---------|:------:|
-
-----
 
 ## Contributing
 
