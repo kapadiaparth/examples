@@ -1,10 +1,10 @@
 # Webpage Thumbnail Generator
 
-This demo uses the Flex.io Javascript SDK to load the HTML contents of the webpage and output it as a PNG image.
+This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-sdk/) to load the HTML contents of the webpage, reduce it in size to a thumbnail and output it as a PNG image.
 
 ## Overview
 
-Flex.io is the API for data feeds. In this demo, we'll take you through the steps necessary to create a serverless data feed which loads a webpage and outputs it as a PNG image.
+[Flex.io](http://Flex.io) is an API for moving, processing and integrating data in the cloud that helps developers build and deploy scalable data feeds with just a few lines of code. 
 
 ## Demo
 
@@ -22,7 +22,7 @@ npm install flexio-sdk-js
 
 ## Setup
 
-You will need an API key in order to use the Flex.io Javascript SDK. You can generate an API key by logging into your account on Flex.io.
+You will need an API key in order to use the Flex.io Javascript SDK. You can sign up for a [Free Flex.io API Key here](https://www.flex.io/app/signup).
 
 ```javascript
 Flexio.setup('YOUR_API_KEY')
@@ -85,6 +85,8 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
   })
 ```
 
+## Deploying the pipe
+
 This is how you can run the saved pipe via an HTTP or cURL request:
 
 ```javascript
@@ -104,11 +106,7 @@ curl -X POST 'https://www.flex.io/api/v1/pipes/{username}-demo-webpage-thumbnail
   -d "url=https://www.flex.io" \
 ```
 
-To use the pipe you've saved with this example, edit line 67 of the [index.html](./index.html#L67) file and insert your pipe alias and API key.
-
-```
-  url: 'https://www.flex.io/api/v1/pipes/{username}-demo-webpage-thumbnail-generator/run?flexio_api_key=YOUR_API_KEY',
-```
+To use the pipe you've saved with this example, edit [line 105 of the index.html](./index.html#L67) file and insert your API key.
 
 ## Conclusion
 
