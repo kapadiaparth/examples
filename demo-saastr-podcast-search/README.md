@@ -120,7 +120,7 @@ curl -X POST 'https://www.flex.io/api/v1/pipes/{username}-demo-saastr-podcast-se
   -d "filter=ipo"
 ```
 
-To use the pipe you've saved with this example, edit line 148 of the [index.html](./index.html#L148) file and insert your pipe alias and API key.
+To use the pipe you've saved with this example, edit [line 148 of the index.html](./index.html#L148) file and insert your pipe alias and API key.
 
 ```
   url: 'https://www.flex.io/api/v1/pipes/{username}-demo-saastr-podcast-search/run?flexio_api_key=YOUR_API_KEY',
