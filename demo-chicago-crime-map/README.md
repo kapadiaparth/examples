@@ -1,6 +1,6 @@
 # Chicago Crime Map
 
-This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-sdk/) to read a table from local storage in Flex.io, filter its rows by year and output the result in JSON. The open-source data set is provided compliemnts of the [Chicago Data Portal](https://data.cityofchicago.org/).
+This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-sdk/) to read a table from local storage in Flex.io, filter its rows by year and output the result in JSON. The open-source data set is provided compliments of the [Chicago Data Portal](https://data.cityofchicago.org/).
 
 ## Overview
 
