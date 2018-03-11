@@ -18,7 +18,7 @@
     Flexio.pipe()
       // set the `filename` variable to the name of the file we're uploading
       .set('filename', '${files.myfile.name}')
-      // read the file from from the HTML upload form into the pipe
+      // read the file from the HTML upload form into the pipe
       .read("context://files/myfile")
       // write the file to the Flex.io S3 connection
       .write("/flexio-public-s3/${filename}")
