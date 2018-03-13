@@ -8,7 +8,7 @@ This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-
 
 ## Demo
 
-https://flexiodata.github.io/examples/chart-stack-exchange-posts/
+https://flexiodata.github.io/examples/demo-chart-stack-exchange-posts/
 
 ## Installation
 
@@ -43,7 +43,7 @@ Flexio.pipe()
 The `request` task allows you to request the contents of a specific URL. Doing the following will issue a web request to get the contents of the CSV file containing the data for the chart.
 
 ```javascript
-  .request('https://raw.githubusercontent.com/flexiodata/examples/master/chart-stack-exchange-posts/phone-market-share.csv')
+  .request('https://data.stackexchange.com/stackoverflow/query/780988/c-posts-per-month')
 ```
 
 ### Convert
