@@ -12,7 +12,7 @@ var pipe = Flexio.pipe()
   .request("https://raw.githubusercontent.com/flexiodata/examples/master/demo-contact-refinement/source-data/contacts-ltd1.csv")
   .convert("csv", "table")
   .select("givenname","surname","streetaddress","city","state","zipcode")
-  .transform( { "columns": [ "givenname", "surname", "streetaddress", "city" ], "operations": [{ "operation": "case", "case": "upper" }] } )
+  .transform({ "columns": [ "givenname", "surname", "streetaddress", "city" ], "operations": [{ "operation": "case", "case": "upper" }] })
   .convert("table", "json")
 
 // You may save this pipe to your Flex.io account, which enables a pipe endpoint to be called using an alias, via our
