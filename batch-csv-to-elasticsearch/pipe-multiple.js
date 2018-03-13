@@ -9,12 +9,12 @@ Flexio.setup('YOUR_API_KEY')
 // Note that the aliases below will need to be replaced with your connection aliases (e.g. `{username}-dropbox`)
 var pipe = Flexio.pipe()
   .list('/tutorial-dropbox/es/*.csv')
-    .foreach('file : input',
-       Flexio.pipe()
-         .read('${file.path}')
-         .convert('csv','table')
-         .write('/tutorial-elasticsearch/${file.name}')
-    )
+  .foreach('file : input',
+     Flexio.pipe()
+       .read('${file.path}')
+       .convert('csv','table')
+       .write('/tutorial-elasticsearch/${file.name}')
+  )
 
 // You may save this pipe to your Flex.io account, which enables a pipe endpoint to be called using an alias, via our
 // REST API or cURL. Note that the alias `examples-batch-csv-to-elasticsearch` below needs to be replaced
