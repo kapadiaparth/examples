@@ -120,7 +120,7 @@
       Flexio.setup('rryrjgqhvtdttzzsjpjr')
       Flexio.pipe()
         // request the content of the URL that is specified
-        .request('https://raw.githubusercontent.com/flexiodata/examples/master/demo-chartjs-from-csv/phone-market-share.csv')
+        .request('https://raw.githubusercontent.com/flexiodata/examples/master/demo-chartjs-from-csv/source-data/phone-market-share.csv')
         // convert the above CSV-formatted text into JSON
         .convert('csv','json')
         .run(function(err, response) {

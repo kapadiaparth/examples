@@ -43,7 +43,7 @@ Flexio.pipe()
 The `request` task allows you to request the contents of a specific URL. Doing the following will issue a web request to get the contents of the CSV file containing the data for the chart.
 
 ```javascript
-  .request('https://raw.githubusercontent.com/flexiodata/examples/master/demo-chartjs-from-csv/phone-market-share.csv')
+  .request('https://raw.githubusercontent.com/flexiodata/examples/master/demo-chartjs-from-csv/source-data/phone-market-share.csv')
 ```
 
 ### Convert
