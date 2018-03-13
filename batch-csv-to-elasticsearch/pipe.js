@@ -7,7 +7,6 @@ Flexio.setup('YOUR_API_KEY')
 
 // This is the Flex.io pipe logic to read a CSV file from Dropbox and write it to Elasticsearch
 // Note that the aliases below will need to be replaced with your connection aliases (e.g. `{username}-dropbox`)
-
 var pipe = Flexio.pipe()
   .read('/tutorial-dropbox/es/contacts.csv')
   .convert('csv','table')
