@@ -23,7 +23,7 @@
       // write the file to the Flex.io S3 connection
       .write("/examples-filetrans-demo/${filename}")
       // output the URL of the file on S3 using the `filename` variable from above
-      .echo('https://s3.amazonaws.com/flexio-public-s3/${filename}')
+      .echo('https://s3.amazonaws.com/flexio-filetrans-demo/${filename}')
       // run the pipe
       .run({ data: formdata }, function(err, response) {
         document.getElementById('info').innerHTML = '' +
