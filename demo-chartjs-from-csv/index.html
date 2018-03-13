@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chart.js chart from a CSV</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Serverless Chart.js chart from a CSV using Flex.io">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="twitter:title" content="Chart.js chart from a CSV">
+    <meta name="twitter:description" content="Serverless Chart.js chart from a CSV using Flex.io">
+
+    <meta property="og:title" content="Chart.js chart from a CSV">
+    <meta property="og:url" content="https://github.com/flexiodata/examples/tree/master/demo-chart-stack-exchange-posts">
+    <meta property="og:description" content="Serverless Chart.js chart from a CSV using Flex.io">
+
+    <link rel="apple-touch-icon" href="https://s3.amazonaws.com/flexio-app-assets/apple-touch-icon.png">
+    <link rel="icon" href="https://s3.amazonaws.com/flexio-app-assets/favicon.png">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.6.1/tachyons.min.css" integrity="sha256-eu1dpzpUytdOAUmB67Qi3mBb6HFjruP8BoAzk4lKiSc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.1/load5.css">
+
+    <style>
+      html, body {
+        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        height: 100%;
+        margin: 0;
+      }
+
+      /* Same as .flex-auto in Tachyons except without the 'auto' flex-basis */
+
+      .flex-fill {
+        flex: 1 1;
+        min-width: 0; /* 1 */
+        min-height: 0; /* 1 */
+      }
+    </style>
+  </head>
+  <body>
+    <a href="https://github.com/flexiodata/examples/tree/master/demo-webpage-thumbnail-generator"><img class="z-max" style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <div id="top"></div>
+
+    <div id="app" class="flex flex-column tc">
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flexio-sdk-js@1.17.2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    <script>
+      var renderChart = function(data) {
+        var chart_data = formatDataForChart(data)
+        var ctx = document.getElementById('canvas').getContext('2d')
+
+        window.my_chart = new Chart(ctx, {
+          type: 'bar',
+          data: chart_data,
+          options: {
+            responsive: true,
+            legend: {
+              position: 'top'
+            },
+            title: {
+              display: true,
+              text: 'Use Flex.io to Create a chart with Chart.js firectly from a CSV file'
+            }
+          }
+        })
+      }
+
+      var formatDataForChart = function(content) {
+        var first_item = _.get(content, '[0]', {})
+        var column_labels = _.map(_.omit(first_item, ['os']), function(val, key) {
+          if (key != 'os')
+          return key
+        })
+
+        // use Lodash to reformat the JSON for use with Chart.js
+        var datasets = _.map(content, function(item) {
+          // use the 'os' column as our label
+          var item_label = _.get(item, 'os', 'Not Found')
+
+          // create an array of number values from each item's JSON object
+          var item_values = _.map(_.omit(item, ['os']), function(val) {
+          return parseFloat(val)
+          })
+
+          return {
+          label: item_label,
+          data: item_values,
+          backgroundColor: getRandomColor()
+          }
+        })
+
+        var chart_data = {
+          labels: column_labels,
+          datasets: datasets
+        }
+
+        return chart_data
+      }
+
+      var getRandomColor = function() {
+        var letters = '0123456789ABCDEF'.split('')
+        var color = '#'
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)]
+        }
+        return color
+      }
+
+      Flexio.setup('rryrjgqhvtdttzzsjpjr')
+      Flexio.pipe()
+        // request the content of the URL that is specified
+        .request('https://raw.githubusercontent.com/flexiodata/data/master/phone-market-share/phone-market-share.csv')
+        // convert the above CSV-formatted text into JSON
+        .convert('csv','json')
+        .run(function(err, response) {
+          var data = JSON.parse(response.text)
+          renderChart(data)
+        })
+    </script>
+  </body>
+</html>
