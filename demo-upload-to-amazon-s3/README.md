@@ -1,6 +1,6 @@
 # Upload to Amazon S3
 
-This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-sdk/) to upload files to a pre-configured bucket on Amazon S3 and echoes back the URL.
+This demo uses the [Flex.io Javascript SDK](https://www.flex.io/docs/javascript-sdk/) to upload data from an HTML form to an Amazon S3 bucket using Flex.io. The credentials for the S3 bucket are stored securely on Flex.io, while the logic for the upload is stored in the client code for maximum flexibility.
 
 ## Overview
 
