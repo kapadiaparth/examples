@@ -109,8 +109,6 @@
       // https://data.stackexchange.com/stackoverflow/query/782028/c-posts-per-day
       // https://data.stackexchange.com/stackoverflow/csv/968099
 
-      Flexio.setup('bbphhkgvrfkgdskssrcb')
-
       var setLoading = function(loading) {
         if (loading === false)
         {
@@ -125,6 +123,7 @@
       var doSubmit = function(source) {
         setLoading(true)
 
+        Flexio.setup('rryrjgqhvtdttzzsjpjr')
         Flexio.pipe()
           .request(source)
           .convert('csv', 'json')
