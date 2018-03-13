@@ -40,10 +40,10 @@ Flexio.pipe()
 
 ### Request
 
-The `request` task allows you to request the contents of a specific URL. Doing the following will issue a web request to get the contents of the Flex.io homepage.
+The `request` task allows you to request the contents of a specific URL. Doing the following will issue a web request to get the contents of the CSV file containing the data for the chart.
 
 ```javascript
-  .request('https://www.flex.io')
+  .request('https://raw.githubusercontent.com/flexiodata/examples/master/demo-chartjs-from-csv/phone-market-share.csv')
 ```
 
 ### Convert
