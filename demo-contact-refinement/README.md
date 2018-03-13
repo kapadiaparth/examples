@@ -43,7 +43,7 @@ Flexio.pipe()
 The `request` task allows you to request the contents of a specific URL. Doing the following will issue a web request to get the contents of the `contacts-ltd1.csv` file on GitHub.
 
 ```javascript
-  .request('https://raw.githubusercontent.com/flexiodata/examples/master/demo-contact-refinement/contacts-ltd1.csv')
+  .request('https://raw.githubusercontent.com/flexiodata/examples/master/demo-contact-refinement/source-data/contacts-ltd1.csv')
 ```
 
 ### Convert
