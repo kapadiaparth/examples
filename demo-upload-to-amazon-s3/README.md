@@ -71,12 +71,6 @@ The `echo` task allows you to output the URL of the file on Amazon S3 using the 
   .echo('https://s3.amazonaws.com/flexio-public-s3/${filename}')
 ```
 
-  // run the pipe
-  .run({ data: formdata }, function(err, response) {
-    document.getElementById('info').innerHTML = '' +
-      '<strong>Your download link is:</strong><br><a href="' + response.text + '">' + response.text + '</a>'
-      })
-
 ### Running the pipe in your Javascript code
 
 Flex.io pipes can be run in your Javascript code right away without needing to be saved externally.
