@@ -7,7 +7,8 @@ Flexio.setup('YOUR_API_KEY')
 
 // This is the Flex.io pipe logic to upload a file to Amazon S3 and output the link
 // Note that the aliases below will need to be replaced with your connection aliases (e.g. `{username}-filetrans-demo`)
-// and a basic upload form which posts a file with the `name="myfile"`
+// and a basic upload form which posts a file with the `name="myfile"`. NOTE: connections are set up
+// using the Flex.io web app -- https://www.flex.io/app
 var pipe = Flexio.pipe()
   .set('filename', '${files.myfile.name}')
   .read("context://files/myfile")
