@@ -5,7 +5,7 @@ var Flexio = require('flexio-sdk-js')
 // insert your API key here to use the Flex.io JS SDK with your account
 Flexio.setup('YOUR_API_KEY')
 
-// This is the Flex.io pipe logic to read call logs from the Twilio API, converts from JSON to table, performs 
+// This is the Flex.io pipe logic to read call logs from the Twilio API, converts from JSON to table, performs
 // some preprocessing withPython and the pandas library and then writes the file to Elasticsearch.
 // Note that the aliases below will need to be replaced with your connection aliases (e.g. `{username}-twilio`)
 var pipe = Flexio.pipe()
@@ -21,9 +21,9 @@ def flexio_handler(context):
   .write('tutorial-elasticsearch/call-log')
 
 // You may save this pipe to your Flex.io account, which enables a pipe endpoint to be called using an alias, via our
-// REST API or cURL. Note that the alias `examples-batch-csv-to-elasticsearch` below needs to be replaced
-// with your own alias in order to save this pipe to your account (e.g. `{username}-batch-csv-to-elasticsearch`)
+// REST API or cURL. Note that the alias `examples-transfer-csv-to-elasticsearch` below needs to be replaced
+// with your own alias in order to save this pipe to your account (e.g. `{username}-transfer-csv-to-elasticsearch`)
 pipe.save({
   name: 'Copy CSV files to Elasticsearch',
-  ename: 'examples-batch-csv-to-elasticsearch'
+  ename: 'examples-transfer-csv-to-elasticsearch'
 })

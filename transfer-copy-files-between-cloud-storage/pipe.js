@@ -12,9 +12,9 @@ var pipe = Flexio.pipe()
   .write('/tutorial-dropbox/contacts.csv')
 
 // You may save this pipe to your Flex.io account, which enables a pipe endpoint to be called using an alias, via our
-// REST API or cURL. Note that the alias `examples-batch-copy-files-between-cloud-storage` below needs to be replaced
-// with your own alias in order to save this pipe to your account (e.g. `{username}-batch-copy-files-between-cloud-storage`)
+// REST API or cURL. Note that the alias `examples-transfer-copy-files-between-cloud-storage` below needs to be replaced
+// with your own alias in order to save this pipe to your account (e.g. `{username}-transfer-copy-files-between-cloud-storage`)
 pipe.save({
   name: 'Copy Single File Between Cloud Storage',
-  ename: 'examples-batch-copy-files-between-cloud-storage'
+  ename: 'examples-transfer-copy-files-between-cloud-storage'
 })

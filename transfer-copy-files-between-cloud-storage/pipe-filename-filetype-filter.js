@@ -5,12 +5,11 @@ var Flexio = require('flexio-sdk-js')
 // insert your API key here to use the Flex.io JS SDK with your account
 Flexio.setup('YOUR_API_KEY')
 
-// This is the Flex.io pipe logic to read files modified since 2018-02-19 from an AWS S3 directory
+// This is the Flex.io pipe logic to read all files named `myfile` regardless of extension, from an AWS S3
 // and write them to Dropbox.
 // Note that the aliases below will need to be replaced with your connection aliases (e.g. `{username}-s3`).
 var pipe = Flexio.pipe()
-  .list('/tutorial-s3')
-  .filter('modified => "2018-02-19"')
+  .list('/tutorial-s3/myfile.*')
   .foreach(
     Flexio.pipe()
       .read('/tutorial-s3/${item.name}')
@@ -18,9 +17,9 @@ var pipe = Flexio.pipe()
   )
 
 // You may save this pipe to your Flex.io account, which enables a pipe endpoint to be called using an alias, via our
-// REST API or cURL. Note that the alias `examples-batch-copy-files-between-cloud-storage` below needs to be replaced
-// with your own alias in order to save this pipe to your account (e.g. `{username}-batch-copy-files-between-cloud-storage`).
+// REST API or cURL. Note that the alias `examples-transfer-copy-files-between-cloud-storage` below needs to be replaced
+// with your own alias in order to save this pipe to your account (e.g. `{username}-transfer-copy-files-between-cloud-storage`)
 pipe.save({
-  name: 'Copy Files Between Cloud Storage (filter on date)',
-  ename: 'examples-batch-copy-files-between-cloud-storage'
+  name: 'Copy Files Between Cloud Storage (filter on name and type)',
+  ename: 'examples-transfer-copy-files-between-cloud-storage'
 })

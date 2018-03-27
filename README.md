@@ -22,8 +22,8 @@ node pipe.js
 
 | Example | Source |
 |:--------|--------|
-| **Copy Files Between Cloud Storage** <br/> Copy files between cloud storage providers such as AWS S3 and Dropbox. Filter the file transfer based on file name, file size and modified date. | [Source](https://github.com/flexiodata/examples/tree/master/batch-copy-files-between-cloud-storage) |
-| **Bulk Load CSV Files into Elasticsearch** <br/> Copy CSV files cloud storage providers into Elasticsearch. Load from an API, like Twilio or a database, like Postgres. | [Source](https://github.com/flexiodata/examples/tree/master/batch-csv-to-elasticsearch) |
+| **Copy Files Between Cloud Storage** <br/> Copy files between cloud storage providers such as AWS S3 and Dropbox. Filter the file transfer based on file name, file size and modified date. | [Source](https://github.com/flexiodata/examples/tree/master/transfer-copy-files-between-cloud-storage) |
+| **Bulk Load CSV Files into Elasticsearch** <br/> Copy CSV files cloud storage providers into Elasticsearch. Load from an API, like Twilio or a database, like Postgres. | [Source](https://github.com/flexiodata/examples/tree/master/transfer-csv-to-elasticsearch) |
 
 ### Demo App Examples
 
