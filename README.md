@@ -18,13 +18,6 @@ node pipe.js
 
 **Have an example?** Submit a PR or [open an issue](https://github.com/flexiodata/examples/issues).
 
-### Batch Processing Examples
-
-| Example | Source |
-|:--------|--------|
-| **Copy Files Between Cloud Storage** <br/> Copy files between cloud storage providers such as AWS S3 and Dropbox. Filter the file transfer based on file name, file size and modified date. | [Source](https://github.com/flexiodata/examples/tree/master/transfer-copy-files-between-cloud-storage) |
-| **Bulk Load CSV Files into Elasticsearch** <br/> Copy CSV files cloud storage providers into Elasticsearch. Load from an API, like Twilio or a database, like Postgres. | [Source](https://github.com/flexiodata/examples/tree/master/transfer-csv-to-elasticsearch) |
-
 ### Demo App Examples
 
 | Example | Demo App | Source |
@@ -35,6 +28,13 @@ node pipe.js
 | **Webpage Thumbnail Generator** <br/> Load the HTML contents of the webpage, reduce it in size to a thumbnail and output it as a PNG image. | [Webpage Thumbnail Generator](https://flexiodata.github.io/examples/demo-webpage-thumbnail-generator/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-webpage-thumbnail-generator) |
 | **Webpage Word Cloud Generator** <br/> Parse the HTML contents of the webpage and return a wordcloud of the words on that page. | [Webpage Word Cloud Generator](https://flexiodata.github.io/examples/demo-webpage-word-cloud-generator/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-webpage-word-cloud-generator) |
 | **Upload to Amazon S3** <br/> Upload to Amazon S3. | [Upload to Amazon S3](https://flexiodata.github.io/examples/demo-upload-to-amazon-s3/) | [Source](https://github.com/flexiodata/examples/tree/master/demo-upload-to-amazon-s3) |
+
+### Transfer Examples
+
+| Example | Source |
+|:--------|--------|
+| **Copy Files Between Cloud Storage** <br/> Copy files between cloud storage providers such as AWS S3 and Dropbox. Filter the file transfer based on file name, file size and modified date. | [Source](https://github.com/flexiodata/examples/tree/master/transfer-copy-files-between-cloud-storage) |
+| **Bulk Load CSV Files into Elasticsearch** <br/> Copy CSV files cloud storage providers into Elasticsearch. Load from an API, like Twilio or a database, like Postgres. | [Source](https://github.com/flexiodata/examples/tree/master/transfer-csv-to-elasticsearch) |
 
 ### Community Examples
 
