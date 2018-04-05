@@ -238,7 +238,7 @@
 
         // create the XHR to POST to the Flex.io pipe
         var xhr = new XMLHttpRequest()
-        xhr.open('POST', 'https://test.flex.io/api/v1/pipes/'+pipename+'/run', true)
+        xhr.open('POST', 'https://api.flex.io/v1/me/pipes/'+pipename+'/run', true)
         xhr.setRequestHeader("Authorization", "Bearer " + apikey)
 
         xhr.onload = function() {

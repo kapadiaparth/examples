@@ -86,7 +86,7 @@ Flex.io pipes can be run in your Javascript code right away without needing to b
 
 Once your pipe is doing exactly what you'd like, you may save it for later use. Saving a pipe is very useful as it will allow it to be called via the REST API or a cURL call with the specified pipe alias. We recommend adding your Flex.io username as a prefix to all of your aliases.
 
-**NOTE: The alias `examples-demo-upload-to-amazon-s3` below needs to be replaced with your own in order to save this pipe to your account. Best practices for aliases are to use your username as a prefix (e.g. `{username}-demo-upload-to-amazon-s3`).**
+**NOTE: The alias `examples-demo-upload-to-amazon-s3` below needs to be replaced with your own in order to save this pipe to your account. Best practices for aliases are to use your username as a prefix (e.g. `demo-upload-to-amazon-s3`).**
 
 ```javascript
   .save({

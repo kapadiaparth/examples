@@ -17,7 +17,7 @@ var pipe = Flexio.pipe()
 
 // You may save this pipe to your Flex.io account, which enables a pipe endpoint to be called using an alias, via our
 // REST API or cURL. Note that the alias `examples-demo-contact-refinement` below needs to be replaced
-// with your own alias in order to save this pipe to your account (e.g. `{username}-demo-contact-refinement`)
+// with your own alias in order to save this pipe to your account (e.g. `demo-contact-refinement`)
 pipe.save({
   name: 'Contact Refinement',
   ename: 'examples-demo-contact-refinement'

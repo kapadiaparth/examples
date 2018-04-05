@@ -118,7 +118,7 @@
 
           $.ajax({
             type: 'POST',
-            url: 'https://www.flex.io/api/v1/pipes/examples-demo-chicago-crime-map/run?flexio_api_key=rryrjgqhvtdttzzsjpjr',
+            url: 'https://api.flex.io/v1/me/pipes/examples-demo-chicago-crime-map/run?flexio_api_key=rryrjgqhvtdttzzsjpjr',
             data: $('form').serialize(),
             dataType: 'json',
             success: function (coords) {

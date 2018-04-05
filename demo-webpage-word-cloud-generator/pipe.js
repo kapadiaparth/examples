@@ -69,7 +69,7 @@ def flexio_handler(context):
 
 // You may save this pipe to your Flex.io account, which enables a pipe endpoint to be called using an alias, via our
 // REST API or cURL. Note that the alias `examples-transfer-copy-files-between-cloud-storage` below needs to be replaced
-// with your own alias in order to save this pipe to your account (e.g. `{username}-demo-webpage-word-cloud-generator`)
+// with your own alias in order to save this pipe to your account (e.g. `demo-webpage-word-cloud-generator`)
 pipe.save({
   name: 'Webpage Word Cloud Generator',
   ename: 'examples-demo-webpage-word-cloud-generator'

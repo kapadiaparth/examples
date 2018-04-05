@@ -6,7 +6,7 @@ var Flexio = require('flexio-sdk-js')
 Flexio.setup('YOUR_API_KEY')
 
 // This is the Flex.io pipe logic to read files less than 50KB from an AWS S3 directory and write them to Dropbox
-// Note that the aliases below will need to be replaced with your connection aliases (e.g. `{username}-s3`)
+// Note that the aliases below will need to be replaced with your connection aliases (e.g. `s3`)
 var pipe = Flexio.pipe()
   .list('/tutorial-s3')
   .filter('size <= 50000')
@@ -18,7 +18,7 @@ var pipe = Flexio.pipe()
 
 // You may save this pipe to your Flex.io account, which enables a pipe endpoint to be called using an alias, via our
 // REST API or cURL. Note that the alias `examples-transfer-copy-files-between-cloud-storage` below needs to be replaced
-// with your own alias in order to save this pipe to your account (e.g. `{username}-transfer-copy-files-between-cloud-storage`)
+// with your own alias in order to save this pipe to your account (e.g. `transfer-copy-files-between-cloud-storage`)
 pipe.save({
   name: 'Copy Files Between Cloud Storage (filter on size)',
   ename: 'examples-transfer-copy-files-between-cloud-storage'

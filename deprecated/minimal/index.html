@@ -44,7 +44,7 @@
           document.getElementById('upload-button').innerHTML = 'Uploading...'
 
           var xhr = new XMLHttpRequest()
-          xhr.open('POST', 'https://www.flex.io/api/v1/pipes/'+pipename+'/run?stream=0', true)
+          xhr.open('POST', 'https://api.flex.io/v1/me/pipes/'+pipename+'/run', true)
           xhr.setRequestHeader("Authorization", "Bearer " + apikey)
           xhr.onload = function() {
 

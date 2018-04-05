@@ -74,7 +74,7 @@ Flex.io pipes can be run in your Javascript code right away without needing to b
 
 Once your pipe is doing exactly what you'd like, you may save it for later use. Saving a pipe is very useful as it will allow it to be called via the REST API or a cURL call with the specified pipe alias. We recommend adding your Flex.io username as a prefix to all of your aliases.
 
-**NOTE: The alias `examples-demo-chicago-crime-map` below needs to be replaced with your own in order to save this pipe to your account. Best practices for aliases are to use your username as a prefix (e.g. `{username}-demo-chicago-crime-map`).**
+**NOTE: The alias `examples-demo-chicago-crime-map` below needs to be replaced with your own in order to save this pipe to your account. Best practices for aliases are to use your username as a prefix (e.g. `demo-chicago-crime-map`).**
 
 ```javascript
   .save({
@@ -92,7 +92,7 @@ This is how you can run the saved pipe via an HTTP or cURL request:
 ```javascript
 $.ajax({
   type: 'POST',
-  url: 'https://www.flex.io/api/v1/pipes/{username}-demo-chicago-crime-map/run?flexio_api_key=YOUR_API_KEY',
+  url: 'https://api.flex.io/v1/me/pipes/demo-chicago-crime-map/run?flexio_api_key=YOUR_API_KEY',
   data: {
     year: 2017
   },
@@ -103,7 +103,7 @@ $.ajax({
 ##### cURL
 
 ```
-curl -X POST 'https://www.flex.io/api/v1/pipes/{username}-demo-chicago-crime-map/run' \
+curl -X POST 'https://api.flex.io/v1/me/pipes/demo-chicago-crime-map/run' \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   -d "year=2017"
 ```
@@ -111,7 +111,7 @@ curl -X POST 'https://www.flex.io/api/v1/pipes/{username}-demo-chicago-crime-map
 To use the pipe you've saved with this example, edit [line 121 of the index.html](./index.html#L121) file and insert your pipe alias and API key.
 
 ```
-  url: 'https://www.flex.io/api/v1/pipes/{username}-demo-chicago-crime-map/run?flexio_api_key=YOUR_API_KEY',
+  url: 'https://api.flex.io/v1/me/pipes/demo-chicago-crime-map/run?flexio_api_key=YOUR_API_KEY',
 ```
 
 ## Get Help

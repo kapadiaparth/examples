@@ -63,7 +63,7 @@ Flex.io pipes can be run in your Javascript code inline without needing to be sa
 
 ### Saving the pipe for later use
 
-You may save this pipe to your Flex.io account, which enables a pipe endpoint to be called using an alias, via our REST API or cURL. **Note that the alias `examples-transfer-copy-files-between-cloud-storage` below needs to be replaced with your own alias in order to save this pipe to your account (e.g. `{username}-transfer-copy-files-between-cloud-storage`)**
+You may save this pipe to your Flex.io account, which enables a pipe endpoint to be called using an alias, via our REST API or cURL. **Note that the alias `examples-transfer-copy-files-between-cloud-storage` below needs to be replaced with your own alias in order to save this pipe to your account (e.g. `transfer-copy-files-between-cloud-storage`)**
 
 
 ```javascript
@@ -82,7 +82,7 @@ This is how you can run the saved pipe via an HTTP or cURL request:
 ```javascript
 $.ajax({
   type: 'POST',
-  url: 'https://www.flex.io/api/v1/pipes/{username}-transfer-copy-files-between-cloud-storage/run?flexio_api_key=YOUR_API_KEY',
+  url: 'https://api.flex.io/v1/me/pipes/transfer-copy-files-between-cloud-storage/run?flexio_api_key=YOUR_API_KEY',
   data: {
     url: 'https://www.flex.io'
   },
@@ -93,7 +93,7 @@ $.ajax({
 ##### cURL
 
 ```
-curl -X POST 'https://www.flex.io/api/v1/pipes/{username}-transfer-copy-files-between-cloud-storage/run' \
+curl -X POST 'https://api.flex.io/v1/me/pipes/transfer-copy-files-between-cloud-storage/run' \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   -d "url=https://www.flex.io" \
 ```
@@ -101,7 +101,7 @@ curl -X POST 'https://www.flex.io/api/v1/pipes/{username}-transfer-copy-files-be
 To use the pipe you've saved with this example, insert your own pipe alias and API key.
 
 ```
-  url: 'https://www.flex.io/api/v1/pipes/{username}-transfer-copy-files-between-cloud-storage/run?flexio_api_key=YOUR_API_KEY',
+  url: 'https://api.flex.io/v1/me/pipes/transfer-copy-files-between-cloud-storage/run?flexio_api_key=YOUR_API_KEY',
 ```
 
 ## Get Help
