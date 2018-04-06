@@ -75,7 +75,7 @@
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="file:///c:/src/flexio-sdk-js/dist/flexio.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flexio-sdk-js@1.23.2"></script>
 
     <script>
       var setLoading = function(loading) {
@@ -102,10 +102,7 @@
 
         setLoading(true)
 
-Flexio.setup('xtdkxpcjwzkpgkhkcmhx', { host: 'localhost', debug: true, insecure: true });
-
-
-      //  Flexio.setup('xtdkxpcjwzkpgkhkcmhx')
+        Flexio.setup('rryrjgqhvtdttzzsjpjr')
         Flexio.pipe()
           // request the content of the URL that is specified and render it to PNG
           .render('${form.url}')
