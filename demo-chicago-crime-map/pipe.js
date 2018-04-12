@@ -20,6 +20,6 @@ var pipe = Flexio.pipe()
 // with your own alias in order to save this pipe to your account (e.g. `demo-chicago-crime-map`)
 pipe.save({
   name: 'Chicago Crime Map',
-  ename: 'examples-demo-chicago-crime-map'
+  alias: 'examples-demo-chicago-crime-map'
 })
 

@@ -20,7 +20,7 @@ var pipe = Flexio.pipe()
 // with your own alias in order to save this pipe to your account (e.g. `demo-contact-refinement`)
 pipe.save({
   name: 'Contact Refinement',
-  ename: 'examples-demo-contact-refinement'
+  alias: 'examples-demo-contact-refinement'
 })
 
 

@@ -24,6 +24,6 @@ var pipe = Flexio.pipe()
 // with your own alias in order to save this pipe to your account (e.g. `demo-chartjs-from-csv`)
 pipe.save({
   name: 'Chart.js chart from a CSV',
-  ename: 'examples-demo-chartjs-from-csv'
+  alias: 'examples-demo-chartjs-from-csv'
 })
 

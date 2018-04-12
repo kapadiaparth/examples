@@ -24,6 +24,6 @@ var pipe = Flexio.pipe()
 // with your own alias in order to save this pipe to your account (e.g. `demo-chart-stack-exchange-posts`)
 pipe.save({
   name: 'StackExchange Posts by Language',
-  ename: 'examples-demo-chart-stack-exchange-posts'
+  alias: 'examples-demo-chart-stack-exchange-posts'
 })
 

@@ -81,7 +81,7 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
 ```javascript
   .save({
     name: 'Webpage Thumbnail Generator',
-    ename: 'examples-demo-webpage-thumbnail-generator'
+    alias: 'examples-demo-webpage-thumbnail-generator'
   })
 ```
 

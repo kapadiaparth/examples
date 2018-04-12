@@ -66,7 +66,7 @@ Once you have prototyped your pipe, you may save it for later use. Saving a pipe
 ```javascript
   .save({
     name: 'CSV to Elasticsearch',
-    ename: 'examples-transfer-csv-to-elasticsearch'
+    alias: 'examples-transfer-csv-to-elasticsearch'
   })
 ```
 

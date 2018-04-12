@@ -20,5 +20,5 @@ var pipe = Flexio.pipe()
 // with your own alias in order to save this pipe to your account (e.g. `demo-upload-to-amazon-s3`)
 pipe.save({
   name: 'Copy CSV files to Elasticsearch',
-  ename: 'examples-demo-upload-to-amazon-s3'
+  alias: 'examples-demo-upload-to-amazon-s3'
 })

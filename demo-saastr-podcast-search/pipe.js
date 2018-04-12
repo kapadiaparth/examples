@@ -20,7 +20,7 @@ var pipe = Flexio.pipe()
 // with your own alias in order to save this pipe to your account (e.g. `demo-saastr-podcast-search`)
 pipe.save({
   name: 'Copy CSV files to Elasticsearch',
-  ename: 'examples-demo-saastr-podcast-search'
+  alias: 'examples-demo-saastr-podcast-search'
 })
 
 

@@ -69,7 +69,7 @@ You may save this pipe to your Flex.io account, which enables a pipe endpoint to
 ```javascript
   .save({
     name: 'S3 to Dropbox',
-    ename: 'examples-transfer-copy-files-between-cloud-storage'
+    alias: 'examples-transfer-copy-files-between-cloud-storage'
   })
 ```
 

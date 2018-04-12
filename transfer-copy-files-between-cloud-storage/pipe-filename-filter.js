@@ -20,5 +20,5 @@ var pipe = Flexio.pipe()
 // with your own alias in order to save this pipe to your account (e.g. `transfer-copy-files-between-cloud-storage`)
 pipe.save({
   name: 'Copy Files Between Cloud Storage (filter on name)',
-  ename: 'examples-transfer-copy-files-between-cloud-storage'
+  alias: 'examples-transfer-copy-files-between-cloud-storage'
 })

@@ -91,7 +91,7 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
 ```javascript
   .save({
     name: 'Upload to Amazon S3',
-    ename: 'examples-demo-upload-to-amazon-s3'
+    alias: 'examples-demo-upload-to-amazon-s3'
   })
 ```
 

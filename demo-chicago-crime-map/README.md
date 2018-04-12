@@ -79,7 +79,7 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
 ```javascript
   .save({
     name: 'Chicago Crime Map',
-    ename: 'examples-demo-chicago-crime-map'
+    alias: 'examples-demo-chicago-crime-map'
   })
 ```
 

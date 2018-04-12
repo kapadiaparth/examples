@@ -71,7 +71,7 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
 ```javascript
   .save({
     name: 'Posts Per Month on StackExchange',
-    ename: 'examples-chart-stack-exchange-posts'
+    alias: 'examples-chart-stack-exchange-posts'
   })
 ```
 

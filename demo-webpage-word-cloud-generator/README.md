@@ -142,7 +142,7 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
 ```javascript
   .save({
     name: 'Webpage Word Cloud Generator',
-    ename: 'examples-demo-webpage-word-cloud-generator'
+    alias: 'examples-demo-webpage-word-cloud-generator'
   })
 ```
 

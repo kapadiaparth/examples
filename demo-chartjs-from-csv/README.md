@@ -71,7 +71,7 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
 ```javascript
   .save({
     name: 'Chart.js chart from a CSV',
-    ename: 'examples-demo-chartjs-from-csv'
+    alias: 'examples-demo-chartjs-from-csv'
   })
 ```
 

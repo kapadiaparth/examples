@@ -83,7 +83,7 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
 ```javascript
   .save({
     name: 'Contact Refinement',
-    ename: 'examples-demo-contact-refinement'
+    alias: 'examples-demo-contact-refinement'
   })
 ```
 

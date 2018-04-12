@@ -72,5 +72,5 @@ def flexio_handler(context):
 // with your own alias in order to save this pipe to your account (e.g. `demo-webpage-word-cloud-generator`)
 pipe.save({
   name: 'Webpage Word Cloud Generator',
-  ename: 'examples-demo-webpage-word-cloud-generator'
+  alias: 'examples-demo-webpage-word-cloud-generator'
 })

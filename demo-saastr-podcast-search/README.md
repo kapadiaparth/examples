@@ -95,7 +95,7 @@ Once your pipe is doing exactly what you'd like, you may save it for later use. 
 ```javascript
   .save({
     name: 'Saastr Podcast Search',
-    ename: 'examples-demo-saastr-podcast-search'
+    alias: 'examples-demo-saastr-podcast-search'
   })
 ```
 
